@@ -1,0 +1,36 @@
+{
+  "name": "bestow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": "12.18.1",
+    "npm": "6.14.5"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-mark:UCLA-BCS/Bestow.git"
+  },
+  "author": "Bestow",
+  "license": "ISC",
+  "dependencies": {
+    "argon2": "^0.27.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mocha": "^8.1.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.10.0",
+    "prettier": "^2.0.5"
+  }
+}
