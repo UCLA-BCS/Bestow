@@ -3,7 +3,7 @@ const express = require("express");
 const session = require("express-session");
 var db = require("./models");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(express.static(__dirname + "/public/"));
