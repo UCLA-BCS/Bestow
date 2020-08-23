@@ -12,6 +12,7 @@ let SiteUserSchema = new Schema(
   {
     password: {
       type: String,
+      required: true,
     },
   },
   {
@@ -22,7 +23,6 @@ let SiteUserSchema = new Schema(
   {
     dietaryRestrictions: {
       type: String,
-      required: true,
     },
   }
 );
