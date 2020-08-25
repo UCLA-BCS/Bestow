@@ -51,8 +51,19 @@ module.exports = (app) => {
   //======>
   app.get("/user-drinks", async (req, res) => {
     var queryUser = req.body.queryUser;
+
     await db.SiteDrink.find({ owner: queryUser }, "owner", (err, resp) => {
       if (err) return handleError(err);
+    }).then((resp) => {
+      res.send(resp);
+    });
+  });
+
+  app.get("/user-friends", async (req, res) => {
+    var queryUser = req.body.queryUser;
+
+    await db.SiteFriends.find({
+      $or: [{ friendInitiator: queryUser }, { friendReceiver: queryUser }],
     }).then((resp) => {
       res.send(resp);
     });
