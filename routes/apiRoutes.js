@@ -46,6 +46,21 @@ module.exports = (app) => {
   // API ROUTES
   // ================================================================
 
+  // =====>
+  // GET
+  //======>
+  app.get("/user-drinks", async (req, res) => {
+    var queryUser = req.body.queryUser;
+    await db.SiteDrink.find({ owner: queryUser }, "owner", (err, resp) => {
+      if (err) return handleError(err);
+    }).then((resp) => {
+      res.send(resp);
+    });
+  });
+
+  // =====>
+  // POST
+  //======>
   app.post("/register", async (req, res) => {
     const { username, password } = req.body;
 
