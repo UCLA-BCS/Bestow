@@ -66,6 +66,8 @@ module.exports = (app) => {
       $or: [{ friendInitiator: queryUser }, { friendReceiver: queryUser }],
     }).then((resp) => {
       res.send(resp);
+      // check each of these to see if the reverse is true (confirmed friend)
+      // ... there's gotta be a more optimized way of doing that. Research, Mark.
     });
   });
 
@@ -143,6 +145,17 @@ module.exports = (app) => {
       friendReceiver: req.body.receier,
     }).then((resp) => {
       res.send(resp);
+    });
+  });
+
+  app.post("/confirm-friend", async (req, res) => {
+    var currentUser = req.session.user;
+
+    await db.SiteFriend.find({
+      friendInitiator: req.body.initiator,
+      friendReceiver: currentUser,
+    }).then((resp) => {
+      // if this isn't empty, add a friend code in the reverse
     });
   });
 };
