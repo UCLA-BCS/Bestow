@@ -122,7 +122,7 @@ module.exports = (app) => {
   });
 
   app.post("/add-drink", async (req, res) => {
-    var currentUser = req.session.userId;
+    var currentUser = req.session.user;
 
     await db.SiteDrink.create({
       owner: currentUser,
@@ -130,6 +130,17 @@ module.exports = (app) => {
       isHot: req.body.isHot.value,
       drinkName: req.body.drinkName,
       specialInstructions: req.body.specialInstructions,
+    }).then((resp) => {
+      res.send(resp);
+    });
+  });
+
+  app.post("/add-friend", async (req, res) => {
+    var currentUser = req.session.user;
+
+    await db.SiteFriend.create({
+      friendInitiator: currentUser,
+      friendReceiver: req.body.receier,
     }).then((resp) => {
       res.send(resp);
     });
