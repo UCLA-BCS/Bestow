@@ -61,10 +61,37 @@ module.exports = (app) => {
         })
           .then((resp) => {
             req.session.user = username;
-            res.send(req.session.user);
+            res.send(req.session);
           })
           .catch((err) => res.json(err));
       }
     });
+  });
+
+  app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+
+    await db.User.findOne(
+      { username: username },
+      "username password",
+      (err, resp) => {
+        if (err) return handleError(err);
+      }
+    )
+      .then(async (resp) => {
+        var searchSet = resp.password;
+
+        const valid = await argon2.verify(searchSet, password);
+
+        if (valid) {
+          req.session.user = resp.username;
+          res.send(req.session);
+        } else {
+          res.send(req.session);
+        }
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   });
 };
