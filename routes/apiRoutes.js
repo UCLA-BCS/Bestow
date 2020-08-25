@@ -45,4 +45,26 @@ module.exports = (app) => {
   // ================================================================
   // API ROUTES
   // ================================================================
+
+  app.post("/register", async (req, res) => {
+    const { username, password } = req.body;
+
+    const hashword = await argon2.hash(password);
+
+    await db.User.findOne({ username: username }, "username", (err, resp) => {
+      if (err) return handleError(err);
+    }).then((resp) => {
+      if (resp === null) {
+        db.User.create({
+          username: username,
+          password: hashword,
+        })
+          .then((resp) => {
+            req.session.user = username;
+            res.send(req.session.user);
+          })
+          .catch((err) => res.json(err));
+      }
+    });
+  });
 };
