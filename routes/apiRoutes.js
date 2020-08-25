@@ -94,4 +94,18 @@ module.exports = (app) => {
         res.send(err);
       });
   });
+
+  app.post("/add-drink", async (req, res) => {
+    var currentUser = req.session.userId;
+
+    await db.SiteDrink.create({
+      owner: currentUser,
+      coffeeShop: req.body.coffeeShop,
+      isHot: req.body.isHot.value,
+      drinkName: req.body.drinkName,
+      specialInstructions: req.body.specialInstructions,
+    }).then((resp) => {
+      res.send(resp);
+    });
+  });
 };
