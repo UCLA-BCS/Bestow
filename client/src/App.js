@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import NavComponent from "./components/Navbar";
-import {Row, Col} from "reactstrap"
+import NavComponent from "./components/navbar";
+import { Row, Col } from "reactstrap";
 
 function App() {
   return (
@@ -9,10 +9,10 @@ function App() {
       <div className="App">
         <Row>
           <Col md={12}>
-          <NavComponent />
+            <NavComponent />
           </Col>
         </Row>
-    
+
         <p>This shows up on every page</p>
         {/* <Route path="/" exact component={SplashPage} />
         <Route path="/login" component={LoginPage} />

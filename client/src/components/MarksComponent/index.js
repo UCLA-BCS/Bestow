@@ -11,6 +11,7 @@ class MarksComponent extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -20,6 +21,10 @@ class MarksComponent extends React.Component {
     this.setState({
       [name]: value,
     });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
   }
 
   render() {
