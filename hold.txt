@@ -1,3 +1,21 @@
+//==================================>
+// Old Package.json file stuff
+//==================================>
+
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "npm install && node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+
+
+//==================================>
+// Old Server.js File
+//==================================>
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
