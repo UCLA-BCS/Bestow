@@ -55,6 +55,7 @@ module.exports = (app) => {
   app.get("/test", (req, res) => {
     res.send("Works");
   });
+
   app.get("/user-drinks", async (req, res) => {
     var queryUser = req.body.queryUser;
 
