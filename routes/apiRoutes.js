@@ -3,25 +3,25 @@ const mongoose = require("mongoose");
 const db = require("../models");
 const argon2 = require("argon2");
 
-// mongoose.Promise = Promise;
+mongoose.Promise = Promise;
 
-// mongoose.connect(process.env.MONGODB_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-// const mongooseConnection = mongoose.connection;
+const mongooseConnection = mongoose.connection;
 
-// // If there is an error while connecting, it logs the error
-// mongooseConnection.on(
-//   "error",
-//   console.error.bind(console, "connection error:")
-// );
+// If there is an error while connecting, it logs the error
+mongooseConnection.on(
+  "error",
+  console.error.bind(console, "connection error:")
+);
 
-// // When mongoose connects, it console logs that it's connected
-// mongooseConnection.once("open", function () {
-//   console.log("Connected to Database");
-// });
+// When mongoose connects, it console logs that it's connected
+mongooseConnection.once("open", function () {
+  console.log("Connected to Database");
+});
 
 module.exports = (app) => {
   // ================================================================
@@ -31,9 +31,6 @@ module.exports = (app) => {
   // =====>
   // GET
   //======>
-
-  // Testing to see if the backend is up and running
-
   app.get("/user-drinks", async (req, res) => {
     var queryUser = req.body.queryUser;
 
@@ -73,8 +70,9 @@ module.exports = (app) => {
           password: hashword,
         })
           .then((resp) => {
-            req.session.user = username;
-            res.send(req.session);
+            //req.session.user = username;
+            //res.send(req.session);
+            res.send(resp);
           })
           .catch((err) => res.json(err));
       }
@@ -97,10 +95,10 @@ module.exports = (app) => {
         const valid = await argon2.verify(searchSet, password);
 
         if (valid) {
-          req.session.user = resp.username;
-          res.send(req.session);
+          //req.session.user = resp.username;
+          //res.send(req.session);
         } else {
-          res.send(req.session);
+          //res.send(req.session);
         }
       })
       .catch((err) => {
@@ -109,7 +107,7 @@ module.exports = (app) => {
   });
 
   app.post("/add-drink", async (req, res) => {
-    var currentUser = req.session.user;
+    //var currentUser = req.session.user;
 
     await db.SiteDrink.create({
       owner: currentUser,
@@ -123,7 +121,7 @@ module.exports = (app) => {
   });
 
   app.post("/add-friend", async (req, res) => {
-    var currentUser = req.session.user;
+    //var currentUser = req.session.user;
 
     await db.SiteFriend.create({
       friendInitiator: currentUser,
@@ -134,7 +132,7 @@ module.exports = (app) => {
   });
 
   app.post("/confirm-friend", async (req, res) => {
-    var currentUser = req.session.user;
+    //var currentUser = req.session.user;
 
     await db.SiteFriend.find({
       friendInitiator: req.body.initiator,

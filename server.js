@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-//var db = require("./models");
+var db = require("./models");
 
 const PORT = process.env.PORT || 3001;
 
@@ -8,10 +8,11 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, "client/build")));
 
-//require("./routes/apiRoutes")(app);
+require("./routes/apiRoutes")(app);
+
+// Testing base backend
 app.get("/test", (req, res) => {
   res.send("Works");
 });
