@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "proxy": "https://bestow-final.herokuapp.com",
   "engines": {
     "node": "12.18.1",
     "npm": "6.14.5"
