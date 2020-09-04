@@ -2,7 +2,6 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const db = require("../models");
 const argon2 = require("argon2");
-const session = require("express-session");
 
 // mongoose.Promise = Promise;
 
@@ -26,23 +25,6 @@ const session = require("express-session");
 
 module.exports = (app) => {
   // ================================================================
-  // SESSION COOKIE
-  // ================================================================
-
-  app.use(
-    session({
-      name: "sid",
-      saveUninitialized: false,
-      resave: false,
-      secret: process.env.SECRET_KEY,
-      cookie: {
-        maxAge: 288000000,
-        sameSite: true,
-      },
-    })
-  );
-
-  // ================================================================
   // API ROUTES
   // ================================================================
 
@@ -51,10 +33,6 @@ module.exports = (app) => {
   //======>
 
   // Testing to see if the backend is up and running
-
-  app.get("/test", (req, res) => {
-    res.send("Works");
-  });
 
   app.get("/user-drinks", async (req, res) => {
     var queryUser = req.body.queryUser;
