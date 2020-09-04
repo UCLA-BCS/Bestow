@@ -49,6 +49,12 @@ module.exports = (app) => {
   // =====>
   // GET
   //======>
+
+  // Testing to see if the backend is up and running
+
+  app.get("/test", (req, res) => {
+    res.send("Works");
+  });
   app.get("/user-drinks", async (req, res) => {
     var queryUser = req.body.queryUser;
 
