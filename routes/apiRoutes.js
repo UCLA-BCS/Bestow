@@ -1,3 +1,4 @@
+//require("dotenv").config();
 const axios = require("axios");
 const mongoose = require("mongoose");
 const db = require("../models");
@@ -27,118 +28,40 @@ module.exports = (app) => {
   // ================================================================
   // API ROUTES
   // ================================================================
-
   // =====>
   // GET
   //======>
-  app.get("/user-drinks", async (req, res) => {
-    var queryUser = req.body.queryUser;
 
-    await db.SiteDrink.find({ owner: queryUser }, "owner", (err, resp) => {
-      if (err) return handleError(err);
-    }).then((resp) => {
-      res.send(resp);
-    });
-  });
-
-  app.get("/user-friends", async (req, res) => {
-    var queryUser = req.body.queryUser;
-
-    await db.SiteFriends.find({
-      $or: [{ friendInitiator: queryUser }, { friendReceiver: queryUser }],
-    }).then((resp) => {
-      res.send(resp);
-      // check each of these to see if the reverse is true (confirmed friend)
-      // ... there's gotta be a more optimized way of doing that. Research, Mark.
-    });
-  });
+  // To re-add
 
   // =====>
   // POST
   //======>
+
+  // Takes in variables "username" & "password", checks whether they exist, and, if not, creates a user with said credentials
+
   app.post("/register", async (req, res) => {
     const { username, password } = req.body;
 
     const hashword = await argon2.hash(password);
 
-    await db.User.findOne({ username: username }, "username", (err, resp) => {
-      if (err) return handleError(err);
-    }).then((resp) => {
+    await db.SiteUser.findOne(
+      { username: username },
+      "username",
+      (err, resp) => {
+        if (err) return handleError(err);
+      }
+    ).then((resp) => {
       if (resp === null) {
-        db.User.create({
-          username: username,
+        db.SiteUser.create({
+          name: username,
           password: hashword,
         })
           .then((resp) => {
-            //req.session.user = username;
-            //res.send(req.session);
             res.send(resp);
           })
           .catch((err) => res.json(err));
       }
-    });
-  });
-
-  app.post("/login", async (req, res) => {
-    const { username, password } = req.body;
-
-    await db.User.findOne(
-      { username: username },
-      "username password",
-      (err, resp) => {
-        if (err) return handleError(err);
-      }
-    )
-      .then(async (resp) => {
-        var searchSet = resp.password;
-
-        const valid = await argon2.verify(searchSet, password);
-
-        if (valid) {
-          //req.session.user = resp.username;
-          //res.send(req.session);
-        } else {
-          //res.send(req.session);
-        }
-      })
-      .catch((err) => {
-        res.send(err);
-      });
-  });
-
-  app.post("/add-drink", async (req, res) => {
-    //var currentUser = req.session.user;
-
-    await db.SiteDrink.create({
-      owner: currentUser,
-      coffeeShop: req.body.coffeeShop,
-      isHot: req.body.isHot.value,
-      drinkName: req.body.drinkName,
-      specialInstructions: req.body.specialInstructions,
-    }).then((resp) => {
-      res.send(resp);
-    });
-  });
-
-  app.post("/add-friend", async (req, res) => {
-    //var currentUser = req.session.user;
-
-    await db.SiteFriend.create({
-      friendInitiator: currentUser,
-      friendReceiver: req.body.receier,
-    }).then((resp) => {
-      res.send(resp);
-    });
-  });
-
-  app.post("/confirm-friend", async (req, res) => {
-    //var currentUser = req.session.user;
-
-    await db.SiteFriend.find({
-      friendInitiator: req.body.initiator,
-      friendReceiver: currentUser,
-    }).then((resp) => {
-      // if this isn't empty, add a friend code in the reverse
     });
   });
 };
