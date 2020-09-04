@@ -72,6 +72,7 @@ module.exports = (app) => {
           .then((resp) => {
             //req.session.user = username;
             //res.send(req.session);
+            res.send(resp);
           })
           .catch((err) => res.json(err));
       }
