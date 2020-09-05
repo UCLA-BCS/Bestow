@@ -45,13 +45,9 @@ module.exports = (app) => {
 
     const hashword = await argon2.hash(password);
 
-    await db.SiteUser.findOne(
-      { username: username },
-      "username",
-      (err, resp) => {
-        if (err) return handleError(err);
-      }
-    ).then((resp) => {
+    await db.SiteUser.findOne({ name: username }, "name", (err, resp) => {
+      if (err) return handleError(err);
+    }).then((resp) => {
       if (resp === null) {
         db.SiteUser.create({
           name: username,
