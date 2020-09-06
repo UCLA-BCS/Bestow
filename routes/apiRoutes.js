@@ -32,7 +32,19 @@ module.exports = (app) => {
   // GET
   //======>
 
-  // To re-add
+  // ------------------------->> FAVOURITES ----------------------------->>
+  //========================================================>
+  // SEE ALL FAVOURITES OF GIVEN USER
+  // Takes in a user's name (not id) and returns all Favourites associated with them.
+  app.get("/favourite/get/:queryuser", async (req, res) => {
+    var queryUser = req.params.queryuser;
+
+    await db.Favourite.find({ owner: queryUser }, (err, resp) => {
+      if (err) return handleError(err);
+    }).then((resp) => {
+      res.send(resp);
+    });
+  });
 
   // =====>
   // POST
