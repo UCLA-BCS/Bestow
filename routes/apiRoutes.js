@@ -117,7 +117,7 @@ module.exports = (app) => {
   //========================================================>
   // UPDATE USER ALLERGIES/DIETARY
   // Given user name, new allergies and new dietary updates the user information
-  app.post("/update/user", async (req, res) => {
+  app.post("/user/update", async (req, res) => {
     const { name, allergies, dietaryRestrictions } = req.body;
 
     await db.User.findOneAndUpdate(
@@ -150,14 +150,20 @@ module.exports = (app) => {
   });
 
   //========================================================>
-  // UPDATE USER FAVOURITE
-  // Given "_id" of Favourite and information to change, updates item of said ID.
-  app.post("/update/favourite", async (req, res) => {
-    const { _id } = req.body;
+  // UPDATE FAVOURITE
+  // Given "_id" of Favourite and information to change, updates item of said ID. Requires all information.
+  app.post("/favourite/update/:id", async (req, res) => {
+    const id = req.params.id;
+    const { shop, category, name, specialInstructions } = req.body;
 
-    await db.User.findOneAndUpdate(
-      { name: name },
-      { allergies: allergies, dietaryRestrictions: dietaryRestrictions },
+    await db.Favourite.findOneAndUpdate(
+      { _id: id },
+      {
+        shop: shop,
+        category: category,
+        name: name,
+        specialInstructions: specialInstructions,
+      },
       (err, resp) => {
         if (err) return handleError(err);
       }
