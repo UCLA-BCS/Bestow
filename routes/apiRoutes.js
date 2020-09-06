@@ -99,7 +99,7 @@ module.exports = (app) => {
   // ADD FAVOURITE
   // Takes in (1) "owner" (current user), (2) "shop", (3) "category", (4) "name" (of favourite item), and (5) "specialInstructions". Creates Favourite under owner-name.
   app.post("/favourite/add", async (req, res) => {
-    const { owner } = req.owner;
+    const { owner } = req.body;
 
     await db.Favourite.create({
       owner: owner,
