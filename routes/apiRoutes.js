@@ -38,19 +38,19 @@ module.exports = (app) => {
   // POST
   //======>
 
-  // Takes in variables "username", "password", "allergies" (not required) & "dietaryRestrictions", checks whether there's a user called "username", and, if not, creates a user with said credentials
+  // Takes in variables "name", "password", "allergies" (not required) & "dietaryRestrictions", checks whether there's a user called "name", and, if not, creates a user with said credentials
 
   app.post("/register", async (req, res) => {
-    const { username, password, allergies, dietaryRestrictions } = req.body;
+    const { name, password, allergies, dietaryRestrictions } = req.body;
 
     const hashword = await argon2.hash(password);
 
-    await db.User.findOne({ name: username }, "name", (err, resp) => {
+    await db.User.findOne({ name: name }, "name", (err, resp) => {
       if (err) return handleError(err);
     }).then((resp) => {
       if (resp === null) {
         db.User.create({
-          name: username,
+          name: name,
           password: hashword,
           allergies: allergies,
           dietaryRestrictions: dietaryRestrictions,
@@ -63,12 +63,12 @@ module.exports = (app) => {
     });
   });
 
-  // Takes in "username" and "password". Checks database for object of username; compares password given and password stored using the hasher (argon2)
+  // Takes in "name" and "password". Checks database for object of name; compares password given and password stored using the hasher (argon2)
 
   app.post("/login", async (req, res) => {
-    const { username, password } = req.body;
+    const { name, password } = req.body;
 
-    db.User.findOne({ name: username }, "username", (err, resp) => {
+    db.User.findOne({ name: name }, "name", (err, resp) => {
       if (err) {
         res.send(err);
       }
