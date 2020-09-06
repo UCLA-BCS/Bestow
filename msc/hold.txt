@@ -1,3 +1,15 @@
+//===================================>
+// Postman Register Route test
+//==================================>
+
+{
+    "username": "danversion",
+    "password": "nevaDie",
+    "allergies": "life",
+    "dietaryRestriction": "vegan"
+}
+
+
 //==================================>
 // Old Package.json file stuff
 //==================================>
