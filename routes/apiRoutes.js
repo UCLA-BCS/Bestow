@@ -67,7 +67,7 @@ module.exports = (app) => {
 
   //========================================================>
   // LOGIN USER
-  // Takes in "name" and "password". Checks database for object of name; compares password given and password stored using the hasher (argon2)
+  // Takes in "name" and "password". Checks database for object of name; compares password given and password stored using the hasher (argon2); testing
 
   app.post("/login", async (req, res) => {
     const { name, password } = req.body;
