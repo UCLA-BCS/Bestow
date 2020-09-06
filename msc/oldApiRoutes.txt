@@ -109,3 +109,9 @@
     });
   });
 };
+
+//This is the old routes for the original nav bar. Save if we need later//
+{/* <Route path="/" exact component={SplashPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/dashboard" component={DashboardPage} />
+        <Route path="/register" component={RegisterPage} /> */}

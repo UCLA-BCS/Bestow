@@ -15,9 +15,7 @@ const NavComponent = (props) => {
 
 <Row>
   <Col md={6}>
-    <img src="/images/logo_v2.svg" className="img-responsive"  />  <Button variant="contained" color="secondary">
-  Hello
-</Button>
+    <img src="/images/logo_v2.svg" className="img-responsive"  />  
   
   </Col>
 </Row>
