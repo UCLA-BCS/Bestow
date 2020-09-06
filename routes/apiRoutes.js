@@ -36,10 +36,23 @@ module.exports = (app) => {
   //========================================================>
   // SEE ALL FAVOURITES OF GIVEN USER
   // Takes in a user's name (not id) and returns all Favourites associated with them.
-  app.get("/favourite/get/:queryuser", async (req, res) => {
+  app.get("/favourite/getall/:queryuser", async (req, res) => {
     var queryUser = req.params.queryuser;
 
     await db.Favourite.find({ owner: queryUser }, (err, resp) => {
+      if (err) return handleError(err);
+    }).then((resp) => {
+      res.send(resp);
+    });
+  });
+
+  //========================================================>
+  // GET SPECIFIC FAVOURITE
+  // Takes in the id of a favourite and returns all its fields.
+  app.get("/favourite/get/:id", async (req, res) => {
+    var queryId = req.params.id;
+
+    await db.Favourite.findOne({ _id: queryId }, (err, resp) => {
       if (err) return handleError(err);
     }).then((resp) => {
       res.send(resp);
@@ -139,6 +152,19 @@ module.exports = (app) => {
   //========================================================>
   // UPDATE USER FAVOURITE
   // Given "_id" of Favourite and information to change, updates item of said ID.
+  app.post("/update/favourite", async (req, res) => {
+    const { _id } = req.body;
+
+    await db.User.findOneAndUpdate(
+      { name: name },
+      { allergies: allergies, dietaryRestrictions: dietaryRestrictions },
+      (err, resp) => {
+        if (err) return handleError(err);
+      }
+    ).then(async (resp) => {
+      res.json(resp);
+    });
+  });
 
   // ------------------------->> FRIENDS ----------------------------->>
   //========================================================>
