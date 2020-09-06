@@ -51,7 +51,7 @@ module.exports = (app) => {
       if (resp === null) {
         db.User.create({
           name: username,
-          password: password,
+          password: hashword,
           allergies: allergies,
           dietaryRestrictions: dietaryRestrictions,
         })
