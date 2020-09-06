@@ -69,9 +69,7 @@ module.exports = (app) => {
     const { name, password } = req.body;
 
     db.User.findOne({ name: name }, "name", (err, resp) => {
-      if (err) {
-        res.send(resp);
-      }
+      if (err) return handleError(err);
     })
       .then(async (resp) => {
         var checkPass = resp.password;
@@ -79,9 +77,9 @@ module.exports = (app) => {
         const valid = await argon2.verify(checkPass, password);
 
         if (valid) {
-          res.send(resp);
+          res.send("We good");
         } else {
-          res.send(resp);
+          res.send("There was a problem");
         }
       })
       .catch((err) => {
