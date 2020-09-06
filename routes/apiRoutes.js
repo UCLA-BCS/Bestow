@@ -41,17 +41,19 @@ module.exports = (app) => {
   // Takes in variables "username" & "password", checks whether they exist, and, if not, creates a user with said credentials
 
   app.post("/register", async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, allergies, dietaryRestrictions } = req.body;
 
     const hashword = await argon2.hash(password);
 
-    await db.SiteUser.findOne({ name: username }, "name", (err, resp) => {
+    await db.User.findOne({ name: username }, "name", (err, resp) => {
       if (err) return handleError(err);
     }).then((resp) => {
       if (resp === null) {
-        db.SiteUser.create({
+        db.User.create({
           name: username,
           password: hashword,
+          allergies: allergies,
+          dietaryRestrictions: dietaryRestrictions,
         })
           .then((resp) => {
             res.send(resp);
