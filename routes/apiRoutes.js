@@ -126,7 +126,7 @@ module.exports = (app) => {
       (err, resp) => {
         if (err) return handleError(err);
       }
-    ).then(async (resp) => {
+    ).then((resp) => {
       res.json(resp);
     });
   });
@@ -167,7 +167,20 @@ module.exports = (app) => {
       (err, resp) => {
         if (err) return handleError(err);
       }
-    ).then(async (resp) => {
+    ).then((resp) => {
+      res.json(resp);
+    });
+  });
+
+  //========================================================>
+  // DELETE FAVOURITE
+  // Given "_id" of Favourite, delete
+  app.post("/favourite/delete/:id", async (req, res) => {
+    const id = req.params.id;
+
+    await db.Favourite.deleteOne({ _id: id }, (err, resp) => {
+      if (err) return handleError(err);
+    }).then((resp) => {
       res.json(resp);
     });
   });
