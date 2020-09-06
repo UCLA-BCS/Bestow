@@ -1,3 +1,25 @@
+app.post("/login", async (req, res) => {
+    const { name, password } = req.body;
+
+    await db.User.findOne({ name: name }, "name", (err, resp) => {
+      if (err) return handleError(err);
+    })
+      .then(async (resp) => {
+        var checkPass = resp.password;
+
+        const valid = await argon2.verify(checkPass, password);
+
+        if (valid) {
+          res.send("We good");
+        } else {
+          res.send("There was a problem");
+        }
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  }); 
+ 
  app.get("/user-drinks", async (req, res) => {
     var queryUser = req.body.queryUser;
 
