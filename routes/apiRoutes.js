@@ -37,7 +37,9 @@ module.exports = (app) => {
   // =====>
   // POST
   //======>
-
+  // ------------------------->> USERS ----------------------------->>
+  //========================================================>
+  // REGISTER USER
   // Takes in variables "name", "password", "allergies" (not required) & "dietaryRestrictions", checks whether there's a user called "name", and, if not, creates a user with said credentials
 
   app.post("/register", async (req, res) => {
@@ -63,6 +65,8 @@ module.exports = (app) => {
     });
   });
 
+  //========================================================>
+  // LOGIN USER
   // Takes in "name" and "password". Checks database for object of name; compares password given and password stored using the hasher (argon2)
 
   app.post("/login", async (req, res) => {
@@ -86,4 +90,30 @@ module.exports = (app) => {
         res.send(err);
       });
   });
+
+  //========================================================>
+  // UPDATE USER
+
+  // ------------------------->> FAVOURITES ----------------------------->>
+  //========================================================>
+  // ADD FAVOURITE
+  // Takes in (1) "owner" (current user), (2) "shop", (3) "category", (4) "name" (of favourite item), and (5) "specialInstructions". Creates Favourite under owner-name.
+  app.post("/favourite/add", async (req, res) => {
+    const { owner } = req.owner;
+
+    await db.Favourite.create({
+      owner: owner,
+      shop: req.body.shop,
+      category: req.body.category,
+      name: req.body.name,
+      specialInstructions: req.body.specialInstructions,
+    }).then((resp) => {
+      res.send(resp);
+    });
+  });
+
+  // ------------------------->> FRIENDS ----------------------------->>
+  //========================================================>
+  // ADD FRIEND
+  // description
 };
