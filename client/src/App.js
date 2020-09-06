@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavComponent from "./components/navbar";
-import { Row, Col } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
+import UserCard from "./components/UserCard";
 
 function App() {
   return (
@@ -12,12 +13,29 @@ function App() {
             <NavComponent />
           </Col>
         </Row>
-
-        <p>This shows up on every page</p>
-        {/* <Route path="/" exact component={SplashPage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/dashboard" component={DashboardPage} />
-        <Route path="/register" component={RegisterPage} /> */}
+        <Container className="container0">
+        <Row>
+          <Col md={2} className="padding-0">
+            <UserCard  pathimage="/images/button1.png" />
+            </Col>
+            <Col md={2} className="padding-0">
+            <UserCard  pathimage="/images/button2.png" />
+            </Col>
+            <Col md={2} className="padding-0">
+            <UserCard  pathimage="/images/button3.png" />
+          </Col>
+        </Row>
+        </Container>
+        <Container className= "container1">
+          <Container className="container2">
+          <Row>
+            
+          </Row>
+          {/* THis is where the different components will go ex. Login, Register, UserProfile,  */}
+          <p>Welcome to Bestow</p>
+          
+        </Container>
+        </Container>
       </div>
     </Router>
   );
