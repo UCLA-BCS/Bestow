@@ -70,7 +70,7 @@ module.exports = (app) => {
 
     db.User.findOne({ name: username }, "username", (err, resp) => {
       if (err) {
-        res.send("Couldn't find username");
+        res.send(err);
       }
     })
       .then(async (resp) => {
@@ -79,9 +79,9 @@ module.exports = (app) => {
         const valid = await argon2.verify(checkPass, password);
 
         if (valid) {
-          res.send("Correct Login");
+          res.send(resp);
         } else {
-          res.send("There was a problem");
+          res.send(resp);
         }
       })
       .catch((err) => {
