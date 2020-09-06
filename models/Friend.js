@@ -2,7 +2,7 @@ let mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 
-let SiteFriendSchema = new Schema(
+let FriendSchema = new Schema(
   {
     friendInitiator: {
       type: String,
@@ -17,6 +17,6 @@ let SiteFriendSchema = new Schema(
   }
 );
 
-let SiteFriend = mongoose.model("SiteFriend", SiteFriendSchema);
+let Friend = mongoose.model("Friend", FriendSchema);
 
-module.exports = SiteFriend;
+module.exports = Friend;

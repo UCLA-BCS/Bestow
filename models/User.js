@@ -2,7 +2,7 @@ let mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 
-let SiteUserSchema = new Schema(
+let UserSchema = new Schema(
   {
     name: {
       type: String,
@@ -17,7 +17,7 @@ let SiteUserSchema = new Schema(
   },
   {
     allergies: {
-      type: Boolean,
+      type: String,
     },
   },
   {
@@ -27,6 +27,6 @@ let SiteUserSchema = new Schema(
   }
 );
 
-let SiteUser = mongoose.model("SiteUser", SiteUserSchema);
+let User = mongoose.model("User", UserSchema);
 
-module.exports = SiteUser;
+module.exports = User;

@@ -1,5 +1,5 @@
 module.exports = {
-  SiteDrink: require("./SiteDrink.js"),
-  SiteFriend: require("./SiteFriends.js"),
-  SiteUser: require("./SiteUser.js"),
+  Favourite: require("./Favourite.js"),
+  Friend: require("./Friend.js"),
+  User: require("./User.js"),
 };

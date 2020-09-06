@@ -2,7 +2,7 @@ let mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 
-let SiteDrinkSchema = new Schema(
+let FavouriteSchema = new Schema(
   {
     owner: {
       type: String,
@@ -10,17 +10,17 @@ let SiteDrinkSchema = new Schema(
     },
   },
   {
-    coffeeShop: {
+    shop: {
       type: String,
     },
   },
   {
-    isHot: {
+    category: {
       type: Boolean,
     },
   },
   {
-    drinkName: {
+    name: {
       type: String,
       required: true,
     },
@@ -33,6 +33,6 @@ let SiteDrinkSchema = new Schema(
   }
 );
 
-let SiteDrink = mongoose.model("SiteDrink", SiteDrinkSchema);
+let Favourite = mongoose.model("Favourite", FavouriteSchema);
 
-module.exports = SiteDrink;
+module.exports = Favourite;
