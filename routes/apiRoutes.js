@@ -96,13 +96,27 @@ module.exports = (app) => {
           res.json("We good");
         }
       } else {
-        resp.send("error");
+        res.send("error");
       }
     });
   });
 
   //========================================================>
-  // UPDATE USER
+  // UPDATE USER ALLERGIES/DIETARY
+  // Given user name, new allergies and new dietary updates the user information
+  app.post("/update/user", async (req, res) => {
+    const { name, allergies, dietaryRestrictions } = req.body;
+
+    await db.User.findOneAndUpdate(
+      { name: name },
+      { allergies: allergies, dietaryRestrictions: dietaryRestrictions },
+      (err, resp) => {
+        if (err) return handleError(err);
+      }
+    ).then(async (resp) => {
+      res.json(resp);
+    });
+  });
 
   // ------------------------->> FAVOURITES ----------------------------->>
   //========================================================>
@@ -121,6 +135,10 @@ module.exports = (app) => {
       res.send(resp);
     });
   });
+
+  //========================================================>
+  // UPDATE USER FAVOURITE
+  // Given "_id" of Favourite and information to change, updates item of said ID.
 
   // ------------------------->> FRIENDS ----------------------------->>
   //========================================================>
