@@ -70,7 +70,7 @@ module.exports = (app) => {
 
     db.User.findOne({ name: name }, "name", (err, resp) => {
       if (err) {
-        res.send(err);
+        res.send(resp);
       }
     })
       .then(async (resp) => {
