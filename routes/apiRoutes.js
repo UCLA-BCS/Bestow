@@ -38,7 +38,7 @@ module.exports = (app) => {
   // POST
   //======>
 
-  // Takes in variables "username" & "password", checks whether they exist, and, if not, creates a user with said credentials
+  // Takes in variables "username", "password", "allergies" (not required) & "dietaryRestrictions", checks whether there's a user called "username", and, if not, creates a user with said credentials
 
   app.post("/register", async (req, res) => {
     const { username, password, allergies, dietaryRestrictions } = req.body;
@@ -61,5 +61,31 @@ module.exports = (app) => {
           .catch((err) => res.json(err));
       }
     });
+  });
+
+  // Takes in "username" and "password". Checks database for object of username; compares password given and password stored using the hasher (argon2)
+
+  app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+
+    db.User.findOne({ name: username }, "username", (err, resp) => {
+      if (err) {
+        res.send("Couldn't find username");
+      }
+    })
+      .then(async (resp) => {
+        var checkPass = resp.password;
+
+        const valid = await argon2.verify(checkPass, password);
+
+        if (valid) {
+          res.send("Correct Login");
+        } else {
+          res.send("There was a problem");
+        }
+      })
+      .catch((err) => {
+        res.send(err);
+      });
   });
 };
