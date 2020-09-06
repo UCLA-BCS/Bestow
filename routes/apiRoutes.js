@@ -68,7 +68,7 @@ module.exports = (app) => {
   app.post("/login", async (req, res) => {
     const { name, password } = req.body;
 
-    db.User.findOne({ name: name }, "name", (err, resp) => {
+    await db.User.findOne({ name: name }, "name", (err, resp) => {
       if (err) return handleError(err);
     })
       .then(async (resp) => {
