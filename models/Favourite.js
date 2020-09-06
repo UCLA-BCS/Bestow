@@ -11,7 +11,7 @@ let FavouriteSchema = new Schema({
     type: String,
   },
   category: {
-    type: Boolean,
+    type: String,
   },
   name: {
     type: String,
