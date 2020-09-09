@@ -1,8 +1,8 @@
-let mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-let Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-let FriendSchema = new Schema({
+const FriendSchema = new Schema({
   friendInitiator: {
     type: String,
     required: true,
@@ -13,6 +13,6 @@ let FriendSchema = new Schema({
   },
 });
 
-let Friend = mongoose.model("Friend", FriendSchema);
+const Friend = mongoose.model("Friend", FriendSchema);
 
 module.exports = Friend;
