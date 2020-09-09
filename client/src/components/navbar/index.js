@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {Row, Col} from "reactstrap"
 import "./index.css"
-import { Button } from '@material-ui/core';
 
 const NavComponent = (props) => {
   return( 
