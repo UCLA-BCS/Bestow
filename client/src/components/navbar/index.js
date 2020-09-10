@@ -1,32 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {Row, Col} from "reactstrap"
-import "./index.css"
+import React from "react"
+import { Container, Row, Col } from "reactstrap";
+import UserCard from "../UserCard";
 
-const NavComponent = (props) => {
-  return( 
-  
-  
-  <>
-
-  
-  <div className="navbar header">
-
-<Row>
-  <Col md={6}>
-    <img src="/images/logo_v2.svg" className="img-responsive"  />  
-  
-  </Col>
-</Row>
-
-      
-        {/* <Link to="/">Home</Link> |{" "}
-        <Link to="/login">Login</Link> |{" "}
-        <Link to="/register">Create Account</Link> |{" "} */}
-    </div>
-
-    </>
-  );
-};
-
-export default NavComponent;
+function NavBar (props) {
+ return (
+    <Container className="container0">
+    <Row>
+      {/* Need to set up functionality so that these have click events and that they show up after login */}
+      <Col md={2} className="padding-0">
+        <UserCard  pathimage="/images/button1.png" />
+        </Col>
+        <Col md={2} className="padding-0">
+        <UserCard  pathimage="/images/button2.png" />
+        </Col>
+        <Col md={2} className="padding-0">
+        <UserCard  pathimage="/images/button3.png" />
+      </Col>
+    </Row>
+    </Container>
+ 
+ )
+}
+export default NavBar 
