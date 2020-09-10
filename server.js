@@ -1,14 +1,29 @@
 const express = require("express");
 const path = require("path");
 var db = require("./models");
+const session = require("express-session");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-
+require("dotenv").config()
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "client/build")));
+
+
+app.use(
+  session({
+    name: "sid",
+    saveUninitialized: false,
+    resave: false,
+    secret: process.env.SECRET,
+    cookie: {
+      maxAge: 28800000,
+      sameSite: true,
+    },
+  })
+);
 
 require("./routes/apiRoutes")(app);
 

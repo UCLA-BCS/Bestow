@@ -6,7 +6,7 @@ const argon2 = require("argon2");
 
 mongoose.Promise = Promise;
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/jthdatabase", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -68,8 +68,16 @@ module.exports = (app) => {
   // Takes in variables "name", "password", "allergies" (not required) & "dietaryRestrictions", checks whether there's a user called "name", and, if not, creates a user with said credentials
 
   app.post("/register", async (req, res) => {
-    const { name, password, allergies, dietaryRestrictions } = req.body;
+    const {
+      name,
+      firstName,
+      lastName,
+      password,
+      allergies,
+      dietaryRestrictions,
+    } = req.body;
 
+    console.log(req.body);
     const hashword = await argon2.hash(password);
 
     await db.User.findOne({ name: name }, "name", (err, resp) => {
@@ -78,6 +86,8 @@ module.exports = (app) => {
       if (resp === null) {
         db.User.create({
           name: name,
+          firstName: firstName,
+          lastName: lastName,
           password: hashword,
           allergies: allergies,
           dietaryRestrictions: dietaryRestrictions,
@@ -106,12 +116,39 @@ module.exports = (app) => {
         const valid = await argon2.verify(checkPass, password);
 
         if (valid) {
+          req.session.name = name;
+
           res.json("We good");
+        } else {
+           if(req.session.name){
+             req.session.name=""
+           }
+          res.json("unauthorized");
         }
       } else {
         res.send("error");
       }
     });
+  });
+
+  //====================================================
+  // Get current User information
+  app.get("/user", function (req, res) {
+    if (req.session.name) {
+      db.User.find({ name: req.session.name }).then((results) => {
+        const userInfo = {
+          _id: results[0]._id,
+          name: results[0].name,
+          firstName: results[0].firstName,
+          lastName: results[0].lastName,
+          allergies: results[0].allergies,
+          dietaryRestrictions: results[0].dietaryRestrictions,
+        };
+        res.json(userInfo);
+      });
+    } else {
+      res.send("unauthorized");
+    }
   });
 
   //========================================================>
