@@ -116,6 +116,8 @@ module.exports = (app) => {
             res.send(resp);
           })
           .catch((err) => res.json(err));
+      } else {
+        res.send("Already Exists");
       }
     });
   });
@@ -225,5 +227,38 @@ module.exports = (app) => {
   // ------------------------->> FRIENDS ----------------------------->>
   //========================================================>
   // ADD FRIEND
+  // Given user id and friend id, add friend
+  app.post("/friend/add", async (req, res) => {
+    const { userID, friendID } = req.body;
+
+    await db.Friend.findOne(
+      { initiator: userID, receiver: friendID },
+      (err, resp) => {
+        if (err) return handleError(err);
+      }
+    ).then((resp) => {
+      if (resp === null) {
+        db.Friend.create({
+          initiator: userID,
+          receiver: friendID,
+        })
+          .then((resp) => {
+            res.send(resp);
+          })
+          .catch((err) => res.json(err));
+      } else {
+        res.send(resp.body);
+      }
+    });
+  });
+
+  //========================================================>
+  // DELETE FRIEND
   // description
+  app.post("/friend/delete", async (req, res) => {
+    // Get user's id
+    // Get friend's id
+    // Check database to see if there's already a relationship
+    // If there is no relationship, add one.
+  });
 };
