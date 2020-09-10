@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export default {
-  //===============================================/
-  // FAVOURITES
-  //==============================================
+  //================================================/
+  // USERS
+  //==============================================/
   getCurrentUser: function () {
     return axios.get("/user");
   },
@@ -25,6 +25,10 @@ export default {
       },
     });
   },
+
+  //===============================================/
+  // FAVOURITES
+  //=============================================/
   // API.getFavourites(user).then((resp) => { //code })
   getFavourites: function (user) {
     return axios.get(`/favourite/getall/${user}`);
