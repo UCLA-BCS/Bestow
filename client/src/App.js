@@ -6,15 +6,17 @@ import Home from "./pages/home"
 import Login from"./pages/login";
 import Register from"./pages/register";
 import Friends from"./pages/friends";
+import Favorite from"./pages/favorite";
 
 function App() {
   return (
     <Router>
       <Header />
-      {window.location.pathname.includes("/home") || window.location.pathname.includes("/friends") ? <NavBar />:"" }
+      {window.location.pathname.includes("/home") || window.location.pathname.includes("/friends") || window.location.pathname.includes("/favorite") ? <NavBar />:"" }
       <Route exact path="/" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/home" component={Home} />
+      <Route exact path="/favorite" component={Favorite} />
       <Route exact path="/friends" component={Friends} />
     </Router>
   );
