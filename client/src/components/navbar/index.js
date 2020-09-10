@@ -6,7 +6,6 @@ function NavBar (props) {
  return (
     <Container className="container0">
     <Row>
-      {/* Need to set up functionality so that these have click events and that they show up after login */}
       <Col md={2} className="padding-0">
         <UserCard  pathimage="/images/button1.png" />
         </Col>
