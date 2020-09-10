@@ -4,16 +4,27 @@ export default {
   //===============================================/
   // FAVOURITES
   //==============================================
-getCurrentUser: function (){
-return axios.get("/user")
-},
+  getCurrentUser: function () {
+    return axios.get("/user");
+  },
 
-signUp: function (userInfo){
-  return axios.post("/register",userInfo)
-},
-logIn: function (userInfo){
-  return axios.post("/login",userInfo)
-},
+  signUp: function (userInfo) {
+    return axios.post("/register", userInfo);
+  },
+  logIn: function (userInfo) {
+    return axios.post("/login", userInfo);
+  },
+  // Updates user allergies, or dietaryRestrictions given user **ID** (not name)
+  updateUser: function (id, allergies, dietaryRestrictions) {
+    return axios.post({
+      url: "/user/update",
+      data: {
+        id: id,
+        allergies: allergies,
+        dietaryRestrictions: dietaryRestrictions,
+      },
+    });
+  },
   // API.getFavourites(user).then((resp) => { //code })
   getFavourites: function (user) {
     return axios.get(`/favourite/getall/${user}`);

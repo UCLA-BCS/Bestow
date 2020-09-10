@@ -1,12 +1,11 @@
 require("dotenv").config();
-const axios = require("axios");
 const mongoose = require("mongoose");
 const db = require("../models");
 const argon2 = require("argon2");
 
 mongoose.Promise = Promise;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/jthdatabase", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -57,6 +56,27 @@ module.exports = (app) => {
     }).then((resp) => {
       res.send(resp);
     });
+  });
+
+  // ------------------------->> USERS ----------------------------->>
+  //====================================================
+  // Get current User information
+  app.get("/user", function (req, res) {
+    if (req.session.name) {
+      db.User.find({ name: req.session.name }).then((results) => {
+        const userInfo = {
+          _id: results[0]._id,
+          name: results[0].name,
+          firstName: results[0].firstName,
+          lastName: results[0].lastName,
+          allergies: results[0].allergies,
+          dietaryRestrictions: results[0].dietaryRestrictions,
+        };
+        res.json(userInfo);
+      });
+    } else {
+      res.send("unauthorized");
+    }
   });
 
   // =====>
@@ -120,9 +140,9 @@ module.exports = (app) => {
 
           res.json("We good");
         } else {
-           if(req.session.name){
-             req.session.name=""
-           }
+          if (req.session.name) {
+            req.session.name = "";
+          }
           res.json("unauthorized");
         }
       } else {
@@ -131,34 +151,14 @@ module.exports = (app) => {
     });
   });
 
-  //====================================================
-  // Get current User information
-  app.get("/user", function (req, res) {
-    if (req.session.name) {
-      db.User.find({ name: req.session.name }).then((results) => {
-        const userInfo = {
-          _id: results[0]._id,
-          name: results[0].name,
-          firstName: results[0].firstName,
-          lastName: results[0].lastName,
-          allergies: results[0].allergies,
-          dietaryRestrictions: results[0].dietaryRestrictions,
-        };
-        res.json(userInfo);
-      });
-    } else {
-      res.send("unauthorized");
-    }
-  });
-
   //========================================================>
   // UPDATE USER ALLERGIES/DIETARY
   // Given user name, new allergies and new dietary updates the user information
   app.post("/user/update", async (req, res) => {
-    const { name, allergies, dietaryRestrictions } = req.body;
+    const { id, allergies, dietaryRestrictions } = req.body;
 
     await db.User.findOneAndUpdate(
-      { name: name },
+      { _id: id },
       { allergies: allergies, dietaryRestrictions: dietaryRestrictions },
       (err, resp) => {
         if (err) return handleError(err);
