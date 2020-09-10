@@ -6,7 +6,7 @@ import Home from "./pages/home"
 import Login from"./pages/login";
 import Register from"./pages/register";
 import Friends from"./pages/friends";
-import Favorite from"./pages/favorite";
+import Favorite from"./pages/favourite";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <Route exact path="/" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/home" component={Home} />
-      <Route exact path="/favorite" component={Favorite} />
+      <Route exact path="/favourite" component={Favourite} />
       <Route exact path="/friends" component={Friends} />
     </Router>
   );
