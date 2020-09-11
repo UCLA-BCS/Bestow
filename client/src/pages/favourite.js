@@ -26,7 +26,7 @@ class Favourite extends Component {
     }
 
     loadFavourites = () => {
-    API.getFavourites()
+    API.getFavourites("5f5ab1cf1ed236229ce253e0")
         .then(res =>
         this.setState({ fooditems: res.data})
         )
@@ -65,7 +65,7 @@ class Favourite extends Component {
                                 <td>{fooditems.shop}</td>
                                 <td>{fooditems.name}</td>
                                 <td>{fooditems.specialInstructions}</td>
-                                <td><RemoveBtn id= {fooditems._id} removebtn={this.deleteFavourite}/></td>
+                                <td><RemoveBtn id={fooditems._id} removebtn={this.deleteFavourite}/></td>
                             </tr>
                         ))}
                         </tbody>
