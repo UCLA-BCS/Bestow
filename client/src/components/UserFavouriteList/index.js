@@ -2,7 +2,7 @@
 // possibility of creating classes for user, foodlist, etc for an easier translation between the database into the table
 import React from "react";
 import { Table } from "reactstrap";
-import "./style.css";
+// import "./style.css";
 
 
 // export function 
