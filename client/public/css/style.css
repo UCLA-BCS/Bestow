@@ -4,20 +4,21 @@
 }
 
 .container0 {
-margin: 8%;
-padding-left: 27%;
+margin: 5% auto;
+padding-left: 18%;
 }
 
 .container1 {
     border:  5px black solid;
-    padding: 10px;
-    margin-top: 150px;
+    padding: 2%;
+    margin-top: 5%;
     background-color:#946b4d;
+    margin-bottom: 8%;
 }
 
 .container2 {
     border: 5px black solid;
-    margin: 10px auto;
+    margin-top: 5% auto;
     /* padding-right:0;
     padding-left:0; */
     background-color:#dddddd;

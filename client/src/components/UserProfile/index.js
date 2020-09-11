@@ -1,39 +1,57 @@
 // This is where the uder profile code will go
 import React from "react";
-import { Form} from 'semantic-ui-react'
+import { Form } from "semantic-ui-react";
 import { Container, Row, Col } from "reactstrap";
-import "./index.css"
+import "./index.css";
 import InputBox from "../InputBox";
 
 const ProfileForm = (props) => {
-    return(
-        
-        <Row>
-            <Col md={6}>
-            <img src="/images/Profile.png" className="ProfilePic" />   
-            </Col>
-            <Col md={6}>
+  return (
+    <Row>
+      <Col md={6}>
+        <img src="/images/Profile.png" className="ProfilePic" />
         <Form>
-            <InputBox labelName="User Name" labelClassName="userName" inputClassName="userBox" placeHolder="User"/>
-
-        {/* <Form.Field>
-            <label className="userName">User Name</label>
-            <input className="userBox" placeholder='User' />
-        </Form.Field> */}
-        <InputBox labelName="First & Last Name" labelClassName="firstName" inputClassName="userBox" placeHolder="Users First and Last Name" />
-        {/* <Form.Field>
-            <label className="firstName">First & Last Name</label>
-            <input className="userBox" placeholder='Users First and Last Name' />
-        </Form.Field> */}
-        {/* <Form.Field>
-            <Checkbox label='Enter your changes to your profile then hit submit to update' />
-        </Form.Field>
-        <Button type='submit'>Update Profile</Button> */}
+          <InputBox
+            labelName="User Name"
+            labelClassName="profileUserName"
+            inputClassName="profileUserBox"
+            placeHolder="Import User Name"
+          />
         </Form>
-        </Col>
-        </Row>
-    );
+      </Col>
+      <Col md={6}>
+        <Form>
+          <InputBox
+            labelName="First Name"
+            labelClassName="profileFirstName"
+            inputClassName="profileUserBox"
+            placeHolder="Import User First Name"
+          />
+
+          <InputBox
+            labelName="Last Name"
+            labelClassName="lastName"
+            inputClassName="profileUserBox"
+            placeHolder="Import User Last Name"
+          />
+
+          <InputBox
+            labelName="Allergies"
+            labelClassName="lastName"
+            inputClassName="profileUserBox"
+            placeHolder="List User Allergies"
+          />
+
+          <InputBox
+            labelName="Dietary Restrictions"
+            labelClassName="lastName"
+            inputClassName="profileUserBox"
+            placeHolder="List User Dietary Restrictions"
+          />
+        </Form>
+      </Col>
+    </Row>
+  );
 };
 
-  
-  export default ProfileForm
+export default ProfileForm;
