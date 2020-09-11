@@ -47,7 +47,7 @@ class Favourite extends Component {
         return(
             <Border >
                 <Row>
-                <p>User's Favourite List</p>
+                <h1>User's Favourite List</h1>
                 <Table hover>
                     <thead>
                         <tr>
@@ -61,8 +61,7 @@ class Favourite extends Component {
                     <tbody>
                         <tr>
                         <th scope="row">1</th>
-                        <th>#</th>
-                        <td>Drink</td>
+                        <th>Drink </th>
                         <td>Coffee Cat</td>
                         <td>Chai Tea latte</td>
                         <td>Oat Milk</td>
