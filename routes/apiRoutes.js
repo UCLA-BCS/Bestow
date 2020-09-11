@@ -128,15 +128,13 @@ module.exports = (app) => {
 
   app.post("/login", async (req, res) => {
     const { name, password } = req.body;
-
-    await db.User.findOne({ name: name }, "name password", (err, resp) => {
-      if (err) return handleError(err);
-    }).then(async (resp) => {
+   console.log(req.body)
+    db.User.findOne({ name: name }).then( async  (resp) => {
       if (resp !== null) {
         console.log(resp);
         var checkPass = resp.password;
-        const valid = await argon2.verify(checkPass, password);
-
+        const valid =  await argon2.verify(checkPass, password);
+console.log(valid)
         if (valid) {
           req.session.name = name;
 
