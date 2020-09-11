@@ -1,6 +1,6 @@
 import React, {Component} from  "react";
 import { Container, Row, Col, Table } from "reactstrap";
-import RemoveFoodBtn from "../components/RemoveFoodBtn";
+import RemoveBtn from "../components/RemoveBtn";
 import FavouriteList from "../components/UserFavouriteList";
 import API from "../utils/API";
 import Border from "../components/Border";
@@ -17,10 +17,7 @@ import Border from "../components/Border";
 
 class Favourite extends Component {
     state = {
-        category: "",
-        shop: "",
-        name: "",
-        specialinstr: "",
+        fooditems = [],
     }
 
 
@@ -31,7 +28,7 @@ class Favourite extends Component {
     loadFavourites = () => {
     API.getFavourites()
         .then(res =>
-        this.setState({ category: "", shop: "", name: "", specialinstr: "" })
+        this.setState({ fooditems: res.data})
         )
         .catch(err => console.log(err));
     };
@@ -41,34 +38,42 @@ class Favourite extends Component {
           .then(res => this.loadFavourites())
           .catch(err => console.log(err));
       };
-    
-    render() {
 
-        return(
-            <Border >
+      
+      render() {
+          
+          return(
+              <Border >
                 <Row>
                 <h1>User's Favourite List</h1>
-                <Table hover>
-                    <thead>
-                        <tr>
-                        <th>#</th>
-                        <th>Category</th>
-                        <th>Shop</th>
-                        <th>Name</th>
-                        <th>Special Instructions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <th>Drink </th>
-                        <td>Coffee Cat</td>
-                        <td>Chai Tea latte</td>
-                        <td>Oat Milk</td>
-                        </tr>
-                    </tbody>
-                </Table>
+                {this.state.footitems.length ? (
+                    <Table hover>
+                        <thead>
+                            <tr>
+                            <th>#</th>
+                            <th>Category</th>
+                            <th>Shop</th>
+                            <th>Name</th>
+                            <th>Special Instructions</th>
+                            <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {this.state.fooditems.map(fooditems => (
+                            <tr>
+                                <td>{fooditems.category}</td>
+                                <td>{fooditems.shop}</td>
+                                <td>{fooditems.name}</td>
+                                <td>{fooditems.specialInstructions}</td>
+                                <td><RemoveBtn id= {fooditems._id} removebtn={this.deleteFavourite}/></td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </Table>
 
+                ): (
+                    <h1>No food items</h1>
+                )}
                 </Row>
             </Border>
       )
@@ -80,3 +85,22 @@ class Favourite extends Component {
 
     
 export default Favourite;
+
+/* <thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>Shop</th>
+<th>Name</th>
+<th>Special Instructions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row">1</th>
+<th>Drink </th>
+<td>Coffee Cat</td>
+<td>Chai Tea latte</td>
+<td>Oat Milk</td>
+</tr>
+</tbody> */
