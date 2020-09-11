@@ -76,4 +76,29 @@ export default {
   deleteFavourite: function (trashID) {
     return axios.post(`/favourite/delete/${trashID}`);
   },
+
+  //===============================================/
+  // FRIENDS
+  //=============================================/
+  // API.addFriend(userID, friendID).then((resp) => { //code })
+  addFriend: function (userID, friendID) {
+    return axios.post({
+      url: "/friend/add",
+      data: {
+        userID: userID,
+        friendID: friendID,
+      },
+    });
+  },
+
+  //  API.deleteFriend(userID, friendID).then((resp) => { //code })
+  deleteFriend: function (userID, friendID) {
+    return axios.post({
+      url: "/friend/delete",
+      data: {
+        userID: userID,
+        friendID: friendID,
+      },
+    });
+  },
 };
