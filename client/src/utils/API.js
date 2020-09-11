@@ -90,4 +90,15 @@ export default {
       },
     });
   },
+
+  //  API.deleteFriend(userID, friendID).then((resp) => { //code })
+  deleteFriend: function (userID, friendID) {
+    return axios.post({
+      url: "/friend/delete",
+      data: {
+        userID: userID,
+        friendID: friendID,
+      },
+    });
+  },
 };

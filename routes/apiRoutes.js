@@ -254,11 +254,17 @@ module.exports = (app) => {
 
   //========================================================>
   // DELETE FRIEND
-  // description
+  // Takes two ids and deletes the friendship between them
   app.post("/friend/delete", async (req, res) => {
-    // Get user's id
-    // Get friend's id
-    // Check database to see if there's already a relationship
-    // If there is no relationship, add one.
+    const { userID, friendID } = req.body;
+
+    await db.Friend.deleteOne(
+      { initiator: userID, receiver: friendID },
+      (err, resp) => {
+        if (err) return handleError(err);
+      }
+    ).then((resp) => {
+      res.json(resp);
+    });
   });
 };
