@@ -6,7 +6,7 @@ function Favourite (props) {
     return(
 <Border >
           <Row></Row>
-          <p>User Favourite List</p>
+          <p>Favorite List</p>
 
        </Border>
     )
