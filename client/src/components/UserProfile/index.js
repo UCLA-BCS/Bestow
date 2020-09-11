@@ -12,6 +12,7 @@ const ProfileForm = (props) => {
         <img src="/images/Profile.png" className="ProfilePic" />
         <Form>
           <InputBox
+           value={props.user.name}
             labelName="User Name"
             labelClassName="profileUserName"
             inputClassName="profileUserBox"
