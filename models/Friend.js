@@ -3,11 +3,11 @@ let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
 let FriendSchema = new Schema({
-  friendInitiator: {
+  initiator: {
     type: String,
     required: true,
   },
-  friendReceiver: {
+  receiver: {
     type: String,
     required: true,
   },
