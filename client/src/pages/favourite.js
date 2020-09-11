@@ -17,8 +17,8 @@ import Border from "../components/Border";
 
 class Favourite extends Component {
     state = {
-        fooditems = [],
-    }
+        fooditems : []
+    };
 
 
     componentDidMount() {
