@@ -2,7 +2,6 @@
 import React from "react";
 import { Form} from 'semantic-ui-react'
 import { Container, Row, Col } from "reactstrap";
-import "./index.css"
 import InputBox from "../InputBox";
 
 const ProfileForm = (props) => {
