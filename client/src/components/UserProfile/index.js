@@ -3,6 +3,7 @@ import React from "react";
 import { Form} from 'semantic-ui-react'
 import { Container, Row, Col } from "reactstrap";
 import "./index.css"
+import InputBox from "../InputBox";
 
 const ProfileForm = (props) => {
     return(
@@ -13,14 +14,17 @@ const ProfileForm = (props) => {
             </Col>
             <Col md={6}>
         <Form>
-        <Form.Field>
+            <InputBox labelName="User Name" labelClassName="userName" inputClassName="userBox" placeHolder="User"/>
+
+        {/* <Form.Field>
             <label className="userName">User Name</label>
             <input className="userBox" placeholder='User' />
-        </Form.Field>
-        <Form.Field>
+        </Form.Field> */}
+        <InputBox labelName="First & Last Name" labelClassName="firstName" inputClassName="userBox" placeHolder="Users First and Last Name" />
+        {/* <Form.Field>
             <label className="firstName">First & Last Name</label>
             <input className="userBox" placeholder='Users First and Last Name' />
-        </Form.Field>
+        </Form.Field> */}
         {/* <Form.Field>
             <Checkbox label='Enter your changes to your profile then hit submit to update' />
         </Form.Field>
