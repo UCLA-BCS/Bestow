@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import removebutton from "../../../public/images/remove-food-btn.png";
+import removebutton from "/images/remove-food-btn.png";
 
 
 // The ...props means, spread all of the passed props onto this element
