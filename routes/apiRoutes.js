@@ -5,7 +5,7 @@ const argon2 = require("argon2");
 
 mongoose.Promise = Promise;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/bestowdb", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -35,8 +35,8 @@ module.exports = (app) => {
   //========================================================>
   // SEE ALL FAVOURITES OF GIVEN USER
   // Takes in a user's name (not id) and returns all Favourites associated with them.
-  app.get("/favourite/getall/:queryuser", async (req, res) => {
-    var queryUser = req.params.queryuser;
+  app.get("/favourite/getall", async (req, res) => {
+    var queryUser = req.session.name;
 
     await db.Favourite.find({ owner: queryUser }, (err, resp) => {
       if (err) return handleError(err);
@@ -137,7 +137,7 @@ module.exports = (app) => {
 console.log(valid)
         if (valid) {
           req.session.name = name;
-
+          
           res.json("We good");
         } else {
           if (req.session.name) {
@@ -174,9 +174,10 @@ console.log(valid)
   // Takes in (1) "owner" (current user), (2) "shop", (3) "category", (4) "name" (of favourite item), and (5) "specialInstructions". Creates Favourite under owner-name.
   app.post("/favourite/add", async (req, res) => {
     const { owner } = req.body;
-
+     console.log(req.session.name);
+     
     await db.Favourite.create({
-      owner: owner,
+      owner:  req.session.name,
       shop: req.body.shop,
       category: req.body.category,
       name: req.body.name,

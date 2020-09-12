@@ -3,11 +3,10 @@ import "./style.css";
 
 // The ...props means, spread all of the passed props onto this element
 // That way we don't have to define them all individually
-function RemoveFoodBtn(props) {
+function RemoveBtn(props) {
   return (
-    <div className="remove-food-btn" {...props} role="button" tabIndex="0">
-    </div>
+    <img src="/images/remove-food-btn.png" role="button" tabIndex="0" onClick={() => props.removebtn(props.id)}/>
   );
 }
 
-export default RemoveFoodBtn;
+export default RemoveBtn;
