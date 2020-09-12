@@ -1,4 +1,6 @@
-.remove-food-btn {
+.deletebtn {
     float: right;
     color: #6a8c93;
+    width: 100%;
 }
+

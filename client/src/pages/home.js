@@ -1,23 +1,29 @@
-import React,{Component} from "react";
+import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import Border from "../components/Border";
 import ProfileForm from "../components/UserProfile";
 import API from "../utils/API";
 
-class Home extends Component{
-  state={
-    user:{}
+class Home extends Component {
+  state = {
+    user: {}
   }
-  componentDidMount(){
+  componentDidMount() {
     console.log("status")
-    API.getCurrentUser().then(user=>{
+
+    API.getCurrentUser().then(user => {
       console.log(user)
-     this.setState({
-       user:user.data
-     })
+      if (user.data === "unauthorized") {
+        window.location.href = "/"
+      } else {
+        this.setState({
+          user: user.data
+        })
+      }
+
     })
   }
-  render(){
+  render() {
     return (
       <Border>
         {console.log(this.state.user)}
@@ -25,7 +31,7 @@ class Home extends Component{
       </Border>
     );
   }
-  
+
 }
 
 export default Home;

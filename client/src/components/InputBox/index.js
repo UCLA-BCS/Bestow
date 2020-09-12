@@ -6,7 +6,7 @@ function InputBox (props) {
     return (
         <Form.Field>
             <label className={props.labelClassName}>{props.labelName}</label>
-            <input onChange={props.handleInputChange} name={props.name} value={props.value} className={props.inputClassName} placeholder={props.placeHolder} />
+            <input type={props.type} onChange={props.handleInputChange} name={props.name} value={props.value} className={props.inputClassName} placeholder={props.placeHolder} />
         </Form.Field>
     )
 };
