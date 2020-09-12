@@ -26,15 +26,11 @@ class Favourite extends Component {
     }
 
     loadFavourites = () => {
-
-        
-            API.getFavourites()
-                .then(res =>
-                    this.setState({ fooditems: res.data })
-                )
-                .catch(err => console.log(err));
-        
-
+        API.getFavourites()
+            .then(res =>
+                this.setState({ fooditems: res.data })
+            )
+            .catch(err => console.log(err));
     };
 
     deleteFavourite = id => {
