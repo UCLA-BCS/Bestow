@@ -113,6 +113,7 @@ module.exports = (app) => {
           dietaryRestrictions: dietaryRestrictions,
         })
           .then((resp) => {
+             req.session.name= name
             res.send(resp);
           })
           .catch((err) => res.json(err));

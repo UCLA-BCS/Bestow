@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import Border from "../components/Border";
 import InputBox from "../components/InputBox";
 import { Form } from "semantic-ui-react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import "../components/InputBox/index.css";
 import API from "../utils/API";
-
+import ButtonUi from "../components/Button"
 class Register extends Component {
-  State = {
+  state = {
     userName: "",
     firstName: "",
     lastName: "",
@@ -15,11 +15,12 @@ class Register extends Component {
     allergies: "",
     dietaryRestrictions: "",
   };
-  handelInputChange = (event) => {
+  handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value,
+      [name]: value
     });
+    console.log(value)
   };
   handleSubmit = (event) => {
     const userReg = {
@@ -28,9 +29,9 @@ class Register extends Component {
       lastName: this.state.lastName,
       password: this.state.password,
       allergies: this.state.allergies,
-      dietaryRestrictions: this.state.diestaryRestrictions,
+      dietaryRestrictions: this.state.dietaryRestrictions,
     };
-    API.register(userReg).then((results) => {
+    API.signUp(userReg).then((results) => {
       console.log(results);
       window.location.href = "/home";
     });
@@ -54,15 +55,22 @@ class Register extends Component {
                 labelName="User Name"
                 labelClassName="firstName"
                 inputClassName="userBox"
-                placeHolder="Import User Name"
+                placeHolder="User Name"
               />
+
               <InputBox
+              value={this.state.firstName}
+              name="firstName"
+              handleInputChange={this.handleInputChange}
                 labelName="First Name"
                 labelClassName="firstName"
                 inputClassName="userBox"
                 placeHolder="User's First Name"
               />
               <InputBox
+                value={this.state.lastName}
+                name="lastName"
+                handleInputChange={this.handleInputChange}
                 labelName="Last Name"
                 labelClassName="firstName"
                 inputClassName="userBox"
@@ -70,23 +78,34 @@ class Register extends Component {
               />
 
               <InputBox
+                value={this.state.password}
+                name="password"
+                handleInputChange={this.handleInputChange}
                 labelName="Password"
                 labelClassName="firstName"
                 inputClassName="userBox"
                 placeHolder="Enter a Password Here"
+                type="password"
               />
               <InputBox
+               value={this.state.allergies}
+               name="allergies"
+               handleInputChange={this.handleInputChange}
                 labelName="Allergies"
                 labelClassName="firstName"
                 inputClassName="userBox"
                 placeHolder="Enter any Allergies"
               />
               <InputBox
+              value={this.state.dietaryRestrictions}
+              name="dietaryRestrictions"
+              handleInputChange={this.handleInputChange}
                 labelName="Dietary Restrictions"
                 labelClassName="firstName"
                 inputClassName="userBox"
                 placeHolder="Enter any Dietary Restrictions"
               />
+              <ButtonUi color="black" text="Sign Up" handleSubmit={this.handleSubmit}/>
             </Form>
           </Col>
         </Row>
