@@ -30,8 +30,8 @@ export default {
   // FAVOURITES
   //=============================================/
   // API.getFavourites(user).then((resp) => { //code })
-  getFavourites: function (user) {
-    return axios.get(`/favourite/getall/${user}`);
+  getFavourites: function () {
+    return axios.get(`/favourite/getall`);
   },
 
   // API.getSpecFavourite(favouriteId).then((resp) => { //code })
