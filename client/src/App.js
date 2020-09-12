@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Header />
-      {window.location.pathname.includes("/home") || window.location.pathname.includes("/friends") || window.location.pathname.includes("/favorite") ? <NavBar />:"" }
+      {window.location.pathname.includes("/home") || window.location.pathname.includes("/friends") || window.location.pathname.includes("/favourite") ? <NavBar />:"" }
       <Route exact path="/" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/home" component={Home} />

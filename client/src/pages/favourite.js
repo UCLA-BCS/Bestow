@@ -4,6 +4,7 @@ import RemoveBtn from "../components/RemoveBtn";
 import FavouriteList from "../components/UserFavouriteList";
 import API from "../utils/API";
 import Border from "../components/Border";
+ 
 
 // function Favourite (props) {
 //     return(
@@ -22,7 +23,15 @@ class Favourite extends Component {
 
 
     componentDidMount() {
-        this.loadFavourites();
+       API.getCurrentUser()
+       .then(user =>{
+            console.log(user.data)
+            if (user.data === "unauthorized") {
+                window.location.href = "/"
+            } else {
+                this.loadFavourites();
+            }
+       })
     }
 
     loadFavourites = () => {
@@ -59,8 +68,9 @@ class Favourite extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.fooditems.map(fooditems => (
+                                {this.state.fooditems.map((fooditems, i) => (
                                     <tr>
+                                        <td>{i+1}</td>
                                         <td>{fooditems.category}</td>
                                         <td>{fooditems.shop}</td>
                                         <td>{fooditems.name}</td>
