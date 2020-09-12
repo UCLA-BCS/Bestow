@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Border from "../components/Border";
 import InputBox from "../components/InputBox";
 import { Form } from "semantic-ui-react";
@@ -30,7 +30,7 @@ class Register extends Component {
       allergies: this.state.allergies,
       dietaryRestrictions: this.state.diestaryRestrictions,
     };
-    API.resgister(userREg).then((results) => {
+    API.register(userReg).then((results) => {
       console.log(results);
       window.location.href = "/home";
     });
