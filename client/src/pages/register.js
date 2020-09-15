@@ -40,13 +40,11 @@ class Register extends Component {
     return (
       <Border>
         <Row>
-          {/* <Col sm="12" md="size: 6, offset: 3">
-          <Col sm="12" col sm="12" col-md="6" offset-md="3">
+          <Col md={6} className="text-center">
             Register
-          </Col> */}
-
-          <Col md={6}>
-            Register
+          </Col>
+          {/* <Col md={6}>
+            Register */}
             <Form>
               <InputBox
                 value={this.state.userName}
@@ -107,7 +105,7 @@ class Register extends Component {
               />
               <ButtonUi color="black" text="Sign Up" handleSubmit={this.handleSubmit}/>
             </Form>
-          </Col>
+          
         </Row>
       </Border>
     );
