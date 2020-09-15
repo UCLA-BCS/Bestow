@@ -7,6 +7,7 @@ import Login from"./pages/login";
 import Register from"./pages/register";
 import Friends from"./pages/friends";
 import Favourite from"./pages/favourite";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route exact path="/home" component={Home} />
       <Route exact path="/favourite" component={Favourite} />
       <Route exact path="/friends" component={Friends} />
+      <Footer />
     </Router>
   );
 }
