@@ -23,6 +23,7 @@ const ProfileForm = (props) => {
       <Col md={6}>
         <Form>
           <InputBox
+          value={props.user.firstName}
             labelName="First Name"
             labelClassName="profileFirstName"
             inputClassName="profileUserBox"
@@ -30,6 +31,7 @@ const ProfileForm = (props) => {
           />
 
           <InputBox
+          value={props.user.lastName}
             labelName="Last Name"
             labelClassName="lastName"
             inputClassName="profileUserBox"
@@ -37,6 +39,7 @@ const ProfileForm = (props) => {
           />
 
           <InputBox
+          value={props.user.allergies}
             labelName="Allergies"
             labelClassName="lastName"
             inputClassName="profileUserBox"
@@ -44,6 +47,7 @@ const ProfileForm = (props) => {
           />
 
           <InputBox
+          value={props.user.dietaryRestrictions}
             labelName="Dietary Restrictions"
             labelClassName="lastName"
             inputClassName="profileUserBox"

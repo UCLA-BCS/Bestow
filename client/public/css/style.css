@@ -48,3 +48,21 @@ body {
     background-size: cover;
 
 }
+.register{
+    margin:2%;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.welcome{
+    margin-top:25%;
+    margin-bottom: 5%;
+    font-weight: bold;
+    text-decoration: underline;
+}
+ .login{
+     color: #946b4d;
+    margin-top:25%;
+    font-weight: bold;
+    text-decoration: underline;
+ }

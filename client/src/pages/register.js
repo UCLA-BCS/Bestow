@@ -39,12 +39,18 @@ class Register extends Component {
   render() {
     return (
       <Border>
-        <Row>
+          <Row>
+              <Col md={6} className="text-center">
+                  <h1 className="welcome">Welcome to Bestow!</h1>
+                  
+                  This helpful app remembers your favorite coffee drinks, restaurants, and snacks so you don’t have to. It also provides the users to connect so you will always remember what your friends and family enjoy.
+                  <h4 className="login">Already have an account?</h4>
+
+                  <ButtonUi color="black" text="Login" handleSubmit={this.handleSubmit}/>
+                  </Col>
+        
           <Col md={6} className="text-center">
-            Register
-          </Col>
-          {/* <Col md={6}>
-            Register */}
+            <h3 className="register"> Register Here</h3>
             <Form>
               <InputBox
                 value={this.state.userName}
@@ -105,6 +111,7 @@ class Register extends Component {
               />
               <ButtonUi color="black" text="Sign Up" handleSubmit={this.handleSubmit}/>
             </Form>
+            </Col>
           
         </Row>
       </Border>
