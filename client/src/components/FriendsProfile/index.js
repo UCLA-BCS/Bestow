@@ -45,13 +45,13 @@ const friendOptions = [
   },
 ]
 
-const DropdownExampleSelection = () => (
+const friendSelection = () => (
   <Dropdown
     placeholder='Select Friend'
     fluid
     selection
     options={friendOptions}
   />
-)
+);
 
-export default DropdownExampleSelection
+export default friendSelection
