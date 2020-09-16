@@ -13,13 +13,11 @@ class Home extends Component {
 
     API.getCurrentUser().then(user => {
       console.log(user)
-      if (user.data === "unauthorized") {
-        window.location.href = "/"
-      } else {
+     
         this.setState({
           user: user.data
         })
-      }
+     
 
     })
   }
