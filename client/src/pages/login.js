@@ -27,12 +27,8 @@ class Login extends Component {
        }
        API.logIn(userInfo).then(results=>{
            console.log(results)
-           if(results.data.includes("error") ){
-             alert("Invalid username/password. Try again.")
-            }
-            else {
-              window.location.href="/home"
-             
+           if(results.data.includes("unauthorized") === false){
+            window.location.href="/"
            }          
           
        })
@@ -54,7 +50,6 @@ class Login extends Component {
                 placeHolder="User Name"
               />
               <InputBox
-              type = "password"
               value={this.state.password}
               name="password"
               handleInputChange={this.handleInputChange}
