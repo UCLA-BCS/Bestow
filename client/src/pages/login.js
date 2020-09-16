@@ -30,9 +30,6 @@ class Login extends Component {
         alert("Invalid username/password. Try again.");
       } else {
         window.location.href = "/home";
-        if (results.data.includes("unauthorized") === false) {
-          window.location.href = "/home";
-        }
       }
     });
   };
