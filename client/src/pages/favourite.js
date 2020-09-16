@@ -27,7 +27,7 @@ class Favourite extends Component {
        .then(user =>{
             console.log(user.data)
             if (user.data === "unauthorized") {
-                window.location.href = "/"
+                window.location.href = "/login"
             } else {
                 this.loadFavourites();
             }

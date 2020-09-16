@@ -14,8 +14,9 @@ function App() {
     <Router>
       <Header />
       {window.location.pathname.includes("/home") || window.location.pathname.includes("/friends") || window.location.pathname.includes("/favourite") ? <NavBar />:"" }
-      <Route exact path="/" component={Login} />
+      <Route exact path="/" component={Register} />
       <Route exact path="/register" component={Register} />
+      <Route exact path="/login" component={Login} />
       <Route exact path="/home" component={Home} />
       <Route exact path="/favourite" component={Favourite} />
       <Route exact path="/friends" component={Friends} />
