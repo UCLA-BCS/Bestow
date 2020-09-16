@@ -41,16 +41,15 @@ export default {
 
   // API.addFavourite(user, shop, category, name).then((resp) => { //code })
   addFavourite: function (user, shop, category, name, specialInstructions) {
-    return axios.post({
-      url: "/favourite/add",
-      data: {
+    return axios.post( "/favourite/add",
+      {
         owner: user,
         shop: shop,
         category: category,
         name: name,
         specialInstructions: specialInstructions,
-      },
-    });
+      }
+    );
   },
 
   // API.updateFavourite(itemID, shop, category, name, specialInstructions).then((resp) => { //code })
