@@ -9,15 +9,25 @@ padding-left: 18%;
 }
 
 .container1 {
-    border:  5px black solid;
+    border:  5px  #4d4d4d solid;
+    border-radius: 20px;    
     padding: 2%;
     margin-top: 5%;
     background-color:#946b4d;
     margin-bottom: 8%;
+    /* filter: drop-shadow(20px 20px 4px #004c98); */
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12)
 }
 
 .container2 {
-    border: 5px black solid;
+    border: 5px #4d4d4d solid;
+    border-radius: 20px;
     margin-top: 5% auto;
     /* padding-right:0;
     padding-left:0; */
@@ -66,3 +76,7 @@ body {
     font-weight: bold;
     text-decoration: underline;
  }
+
+ .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #aeccd4;
+  }

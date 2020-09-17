@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Border from "../components/Border";
 import InputBox from "../components/InputBox";
-import { Form } from "semantic-ui-react";
+import CategoryDropdown from "../components/UserFavouriteList";
+import { Form, Dropdown } from "semantic-ui-react";
 import { Container, Row, Col } from "reactstrap";
 import ButtonUi from "../components/Button";
 import API from "../utils/API";

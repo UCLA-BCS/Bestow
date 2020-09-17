@@ -1,35 +1,24 @@
-// adding food list
-// possibility of creating classes for user, foodlist, etc for an easier translation between the database into the table
-import React from "react";
-import { Table } from "reactstrap";
-// import "./style.css";
+// import React from 'react'
+// import { Dropdown } from 'semantic-ui-react'
 
+// const options = [
+//   { text: "Drink", value: "drink" },
+//   { text: "Entree", value: "entree" },
+//   { text: "Snack", value: "snack" },
+//   { text: "Dessert", value: "dessert" },
+//   { text: "Appetizer", value: "appetizer" }
+// ];
 
-// export function 
-const FavouriteList = (props) => {
-  return (
-    <Table hover>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Category</th>
-          <th>Shop</th>
-          <th>Name</th>
-          <th>Special Instructions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <th>#</th>
-          <td>Drink</td>
-          <td>Coffee Cat</td>
-          <td>Chai Tea latte</td>
-          <td>Oat Milk</td>
-        </tr>
-      </tbody>
-    </Table>
-  );
-}
+// const CategoryDropdown = (props) => (
+//   <Dropdown
+//     placeholder='Select Favourite Category'
+//     fluid
+//     selection
+//     options={options}
+//     onChange={props.handleInputChange}
+//     name={props.name}
+//     value={props.value}
+//   />
+// )
 
-export default FavouriteList;
+// export default CategoryDropdown
