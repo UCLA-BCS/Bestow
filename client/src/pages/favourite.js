@@ -28,6 +28,7 @@ class Favourite extends Component {
 
 
     componentDidMount() {
+<<<<<<< HEAD
         API.getCurrentUser()
             .then(user => {
                 console.log(user.data)
@@ -38,6 +39,16 @@ class Favourite extends Component {
                 }
             })
     };
+=======
+       API.getCurrentUser()
+       .then(user =>{
+            console.log(user.data)
+            
+                this.loadFavourites();
+             
+       })
+    }
+>>>>>>> edeae9f186fd041b673121ea7c1af5bf207de7fc
 
     loadFavourites = () => {
         API.getFavourites()
