@@ -14,11 +14,9 @@ class Friends extends Component {
         API.getCurrentUser()
         .then(user =>{
              console.log(user.data)
-             if (user.data === "unauthorized") {
-                 window.location.href = "/"
-             } else {
+            
                  //loadfriends
-             }
+              
         })
      }
  
