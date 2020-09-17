@@ -1,20 +1,14 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Table } from "reactstrap";
+import { Row, Col, Table } from "reactstrap";
 import RemoveBtn from "../components/RemoveBtn";
-import FavouriteList from "../components/UserFavouriteList";
+import InputBox from "../components/InputBox";
+import { Form } from "semantic-ui-react";
 import API from "../utils/API";
 import Border from "../components/Border";
- 
+import ButtonUi from "../components/Button"
+// import CategoryDropdown from "../components/UserFavouriteList";
 
-// function Favourite (props) {
-//     return(
-// <Border >
-//           <Row>
-//           <p>User's Favourite List</p>
-//           </Row>
-//        </Border>
-//     )
-// }
+
 
 class Favourite extends Component {
     state = {
@@ -23,13 +17,13 @@ class Favourite extends Component {
 
 
     componentDidMount() {
-       API.getCurrentUser()
-       .then(user =>{
-            console.log(user.data)
-            
+        API.getCurrentUser()
+            .then(user => {
+                console.log(user.data)
+
                 this.loadFavourites();
-             
-       })
+
+            })
     }
 
     loadFavourites = () => {
@@ -39,6 +33,30 @@ class Favourite extends Component {
             )
             .catch(err => console.log(err));
     };
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    handleSubmit = event => {
+        event.preventDefault();
+        alert("Clicked on Add");
+        const newFavourite = {
+            category: this.state.category,
+            shop: this.state.shop,
+            name: this.state.name,
+            specialInstructions: this.state.specialInstructions
+
+        };
+        API.addFavourite(newFavourite)
+            // .then(res => this.loadFavourites())
+            .then(this.loadFavourites())
+            .catch(err => console.log(err));
+    };
+
 
     deleteFavourite = id => {
         API.deleteFavourite(id)
@@ -52,50 +70,106 @@ class Favourite extends Component {
         return (
             <Border >
                 <Row>
-                    <h1>User's Favourite List</h1>
-                    {this.state.fooditems.length ? (
-                        <Table hover>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Category</th>
-                                    <th>Shop</th>
-                                    <th>Name</th>
-                                    <th>Special Instructions</th>
-                                    <th>Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.fooditems.map((fooditems, i) => (
-                                    <tr>
-                                        <td>{i+1}</td>
-                                        <td>{fooditems.category}</td>
-                                        <td>{fooditems.shop}</td>
-                                        <td>{fooditems.name}</td>
-                                        <td>{fooditems.specialInstructions}</td>
-                                        <td><RemoveBtn id={fooditems._id} removebtn={this.deleteFavourite} /></td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
+                    <Col md={6}>
 
-                    ) : (
-                        <h1>No food items</h1>
-                        )}
+                        <h1>Add Favourite to list</h1>
+
+                        {/* <CategoryDropdown>
+                            <Dropdown
+                                value={this.state.category}
+                                name="category"
+                                handleInputChange={this.handleInputChange}
+                            />
+                        </CategoryDropdown> */}
+                        <Form>
+                            <InputBox
+                                value={this.state.category}
+                                name="category"
+                                handleInputChange={this.handleInputChange}
+                                // labelClassName="firstName"
+                                inputClassName="addFavourite"
+                                placeHolder="Category of favourite"
+                            />
+                            <InputBox
+                                value={this.state.shop}
+                                name="shop"
+                                handleInputChange={this.handleInputChange}
+                                // labelClassName="firstName"
+                                inputClassName="addFavourite"
+                                placeHolder="Shop of favourite"
+                            />
+                            <InputBox
+                                value={this.state.name}
+                                name="name"
+                                handleInputChange={this.handleInputChange}
+                                // labelClassName="firstName"
+                                inputClassName="addFavourite"
+                                placeHolder="Name of favourite"
+                            />
+                            <InputBox
+                                value={this.state.specialInstructions}
+                                name="specialInstructions"
+                                handleInputChange={this.handleInputChange}
+                                // labelClassName="firstName"
+                                inputClassName="addFavourite"
+                                placeHolder="Special Instructions?"
+                            />
+                            <ButtonUi color="black" text="Add" handleSubmit={this.handleSubmit} />
+                        </Form>
+
+                    </Col>
+                    <Col md={4}>
+                        {/* <img src="/images/logo_v2.svg" className="img-responsive"/> */}
+                    </Col>
                 </Row>
+
+                <Col>
+                    <Row>
+                        <h1>User's Favourite List</h1>
+                        {this.state.fooditems.length ? (
+                            <Table hover>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Category</th>
+                                        <th>Shop</th>
+                                        <th>Name</th>
+                                        <th>Special Instructions</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.state.fooditems.map((fooditems, i) => (
+                                        <tr>
+                                            <td>{i + 1}</td>
+                                            <td>{fooditems.category}</td>
+                                            <td>{fooditems.shop}</td>
+                                            <td>{fooditems.name}</td>
+                                            <td>{fooditems.specialInstructions}</td>
+                                            <td><RemoveBtn id={fooditems._id} removebtn={this.deleteFavourite} /></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+
+                        ) : (
+                                <h1><br />No Food Items<br /></h1>
+                            )}
+                    </Row>
+                </Col>
             </Border>
-        )
-        
+        );
+
     }; // render()
-    
-    
+
+
 };// class Favourite extends Component
 
 
 export default Favourite;
 
 // <Table>
-    
+
 //     <thead>
 // <tr>
 // <th>#</th>

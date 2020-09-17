@@ -15,3 +15,14 @@
     }
 
     /* Haettenschweiler */
+.addFavourite {
+    width: 100%;
+    padding:1.5%;
+    margin-top: 1%;
+    outline: auto #004c98;
+}
+
+.addFavourite:focus {
+    /* background-color: #a7d9f0; */
+    outline: auto #84b4d9;
+}
