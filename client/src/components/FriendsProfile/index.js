@@ -58,7 +58,7 @@ const handleFriendOnChange = event => setFriend(event.target.value);
   //   selection
   //   options={friendOptions}
   // />
-  <select value={friend} onChange={handleFriendOnChange}>
+  <select className="friendsL" value={friend} onChange={handleFriendOnChange}>
     {friendOptions.map(({key,text,value,image}) => <option value={value}>{value}</option>)}
   {/* <option value="grapefruit">Grapefruit</option>
   <option value="lime">Lime</option>

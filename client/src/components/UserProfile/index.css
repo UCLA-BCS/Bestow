@@ -1,16 +1,23 @@
 .profileUserName {
 width:70%;
 margin-top:1%;
+text-decoration: underline;
+font-weight: bold;
 }
 
 .profileFirstName{
 width: 70%;
-margin-top:5%
+margin-top:5%;
+text-decoration: underline;
+font-weight: bold;
+
 }
 
 .lastName{
 width: 70%;
-margin-top:1% 
+margin-top:1% ;
+text-decoration: underline;
+font-weight: bold;
 }
 
 .profileUserBox{
