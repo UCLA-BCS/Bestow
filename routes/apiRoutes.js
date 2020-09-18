@@ -152,6 +152,13 @@ console.log(valid)
     });
   });
 
+  //Logout
+
+  app.get("/logout", function(req,res) {
+    req.session.name=""
+    res.json("unauthorized")
+  })
+
   //========================================================>
   // UPDATE USER ALLERGIES/DIETARY
   // Given user name, new allergies and new dietary updates the user information
@@ -268,3 +275,4 @@ console.log(valid)
     });
   });
 };
+

@@ -14,6 +14,10 @@ export default {
   logIn: function (userInfo) {
     return axios.post("/login", userInfo);
   },
+
+  logOut: function (){
+    return axios.get("/logout")
+  },
   // Updates user allergies, or dietaryRestrictions given user **ID** (not name)
   updateUser: function (id, allergies, dietaryRestrictions) {
     return axios.post({
