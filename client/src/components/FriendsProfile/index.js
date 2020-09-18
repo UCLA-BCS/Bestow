@@ -11,7 +11,7 @@ const friendOptions = [
     key: 'Juliana Hernandez',
     text: 'Juliana Hernandez',
     value: 'Juliana Hernandez',
-    image: { avatar: true, src: '../images/avatar.png' },
+    image: { avatar: true, src: '../images/avatar1.png' },
   },
   {
     key: 'Mark Fullton',
