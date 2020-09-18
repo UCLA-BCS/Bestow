@@ -119,7 +119,7 @@ class Favourite extends Component {
 
                     </Col>
                     <Col md={4}>
-                        {/* <img src="/images/logo_v2.svg" className="img-responsive"/> */}
+                        <img src="/images/favorite.svg" className="img-responsive"/>
                     </Col>
                 </Row>
 
