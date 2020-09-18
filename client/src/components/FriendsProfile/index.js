@@ -1,5 +1,6 @@
 import React from "react";
-import { Dropdown } from 'semantic-ui-react'
+
+// import { Dropdown } from 'semantic-ui-react'
 // import { Container, Row, Col } from "reactstrap";
 
 // function FriendsProfile (props) {
@@ -11,47 +12,60 @@ const friendOptions = [
     key: 'Juliana Hernandez',
     text: 'Juliana Hernandez',
     value: 'Juliana Hernandez',
-    image: { avatar: true, src: '../images/avatar1.png' },
+    image: '../images/avatar1.png'
   },
   {
     key: 'Mark Fullton',
     text: 'Mark Fullton',
     value: 'Mark Fullton',
-    image: { avatar: true, src: './images/avatar.png' },
+    image: './images/avatar.png'
   },
   {
     key: 'Hazel Kasusky',
     text: 'Hazel Kasusky',
     value: 'Hazel Kasusky',
-    image: { avatar: true, src: './images/avatar.png' },
+    image:'./images/avatar.png'
   },
   {
     key: 'Micheal Solo',
     text: 'Micheal Solo',
     value: 'Micheal Solo',
-    image: { avatar: true, src: './images/avatar.png' },
+    image: './images/avatar.png'
   },
   {
     key: 'Michael Pope',
     text: 'Michael Pope',
     value: 'Michael Pope',
-    image: { avatar: true, src: './images/avatar.png' },
+    image: './images/avatar.png'
   },
   {
     key: 'Phil Loy',
     text: 'Phil Loy',
     value: 'Phil Loy',
-    image: { avatar: true, src: './images/avatar.png' },
+    image:'./images/avatar.png'
   },
 ]
 
-const friendSelection = () => (
-  <Dropdown
-    placeholder='Select Friend'
-    fluid
-    selection
-    options={friendOptions}
-  />
-);
+const FriendSelection = () => {
+const [friend, setFriend] = React.useState("")
 
-export default friendSelection
+const handleFriendOnChange = event => setFriend(event.target.value); 
+
+  return (
+  // <Dropdown
+  //   placeholder='Select Friend'
+  //   fluid
+  //   selection
+  //   options={friendOptions}
+  // />
+  <select value={friend} onChange={handleFriendOnChange}>
+    {friendOptions.map(({key,text,value,image}) => <option value={value}>{value}</option>)}
+  {/* <option value="grapefruit">Grapefruit</option>
+  <option value="lime">Lime</option>
+  <option value="coconut">Coconut</option>
+  <option value="mango">Mango</option> */}
+</select>
+
+)};
+
+export default FriendSelection
