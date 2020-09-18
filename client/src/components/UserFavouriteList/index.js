@@ -1,24 +1,31 @@
-// import React from 'react'
-// import { Dropdown } from 'semantic-ui-react'
+import React from 'react';
+import { Dropdown } from 'semantic-ui-react';
+// import "semantic-ui-css/semantic.min.css";
 
-// const options = [
-//   { text: "Drink", value: "drink" },
-//   { text: "Entree", value: "entree" },
-//   { text: "Snack", value: "snack" },
-//   { text: "Dessert", value: "dessert" },
-//   { text: "Appetizer", value: "appetizer" }
-// ];
 
-// const CategoryDropdown = (props) => (
-//   <Dropdown
-//     placeholder='Select Favourite Category'
-//     fluid
-//     selection
-//     options={options}
-//     onChange={props.handleInputChange}
-//     name={props.name}
-//     value={props.value}
-//   />
-// )
 
-// export default CategoryDropdown
+const CategoryDropdown = (props) => {
+    // debugger;
+    return (
+  <Dropdown
+    placeholder='Select Favourite Category'
+    fluid
+    selection
+    options={props.options}
+    onChange={props.handleInputChange}
+    name={props.name}
+    value={props.value}
+  />
+)}
+
+CategoryDropdown.defaultProps = {
+    options :[
+        { text: "Drink", value: "drink" },
+        { text: "Entree", value: "entree" },
+        { text: "Snack", value: "snack" },
+        { text: "Dessert", value: "dessert" },
+        { text: "Appetizer", value: "appetizer" }
+      ]
+}
+
+export default CategoryDropdown

@@ -6,13 +6,18 @@ import { Form } from "semantic-ui-react";
 import API from "../utils/API";
 import Border from "../components/Border";
 import ButtonUi from "../components/Button"
-// import CategoryDropdown from "../components/UserFavouriteList";
+import CategoryDropdown from "../components/UserFavouriteList";
 
 
 
 class Favourite extends Component {
     state = {
-        fooditems: []
+        fooditems: [], 
+        category: "",
+        shop: "",
+        name: "",
+        specialInstructions: ""
+
     };
 
 
@@ -40,6 +45,12 @@ class Favourite extends Component {
             [name]: value
         });
     };
+
+    handleOnDropdownChange = (event, data) => {
+        this.setState({
+            [data.name]: data.value
+        })
+    }
 
     handleSubmit = event => {
         event.preventDefault();
@@ -74,22 +85,21 @@ class Favourite extends Component {
 
                         <h1>Add Favourite to list</h1>
 
-                        {/* <CategoryDropdown>
-                            <Dropdown
-                                value={this.state.category}
-                                name="category"
-                                handleInputChange={this.handleInputChange}
-                            />
-                        </CategoryDropdown> */}
+                        <CategoryDropdown
+                            value={this.state.category}
+                            name="category"
+                            handleInputChange={this.handleOnDropdownChange}
+                            // labelClassName="firstName"
+                        />
                         <Form>
-                            <InputBox
+                            {/* <InputBox
                                 value={this.state.category}
                                 name="category"
                                 handleInputChange={this.handleInputChange}
                                 // labelClassName="firstName"
                                 inputClassName="addFavourite"
                                 placeHolder="Category of favourite"
-                            />
+                            /> */}
                             <InputBox
                                 value={this.state.shop}
                                 name="shop"

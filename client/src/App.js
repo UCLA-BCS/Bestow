@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+// import "semantic-ui-css/semantic.min.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Home from "./pages/home";
@@ -9,6 +10,7 @@ import Friends from "./pages/friends";
 import Favourite from "./pages/favourite";
 import Footer from "./components/Footer";
 import API from "./utils/API";
+
 
 class App extends Component {
   state = {

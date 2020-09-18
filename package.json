@@ -41,6 +41,7 @@
     "mongoose": "^5.10.0",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "semantic-ui-css": "^2.4.1"
   }
 }
