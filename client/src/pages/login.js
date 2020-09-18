@@ -27,7 +27,7 @@ class Login extends Component {
     };
     API.logIn(userInfo).then((results) => {
       console.log(results);
-      if (results.data.includes("error")) {
+      if (results.data.includes("unauthorized")) {
         alert("Invalid username/password. Try again.");
       } else {
         window.location.href = "/home";
@@ -37,13 +37,16 @@ class Login extends Component {
       }
     });
   };
+  handleRegister = (event) => {
+    window.location.href = "/";
+  };
 
   render() {
     return (
       <Border>
         <Row>
           <Col md={6}>
-            Login
+            <h2 className="loginTitle">Login</h2>
             <Form>
               <InputBox
                 value={this.state.userName}
@@ -69,7 +72,15 @@ class Login extends Component {
                 text="Sign In"
                 handleSubmit={this.handleSubmit}
               />
+              <ButtonUi
+                color="black"
+                text="Register"
+                handleSubmit={this.handleRegister}
+              />
             </Form>
+          </Col>
+          <Col md={6}>
+          <img src="/images/Profile.png" className="ProfilePic" />
           </Col>
         </Row>
       </Border>

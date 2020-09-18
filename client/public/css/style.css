@@ -81,9 +81,16 @@ body {
 
  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
     background-color: #aeccd4;
+
   }
   .footer {
     padding-left: 45%;
 
     
 }
+.loginTitle{
+    margin-left: 20%;
+    text-decoration: underline;
+}
+
+
