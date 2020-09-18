@@ -12,19 +12,19 @@ const friendOptions = [
     key: 'Juliana Hernandez',
     text: 'Juliana Hernandez',
     value: 'Juliana Hernandez',
-    image: '../images/avatar1.png'
+    image: '../images/friend.svg'
   },
   {
     key: 'Mark Fullton',
     text: 'Mark Fullton',
     value: 'Mark Fullton',
-    image: './images/avatar.png'
+    image: './images/friend.svg'
   },
   {
     key: 'Hazel Kasusky',
     text: 'Hazel Kasusky',
     value: 'Hazel Kasusky',
-    image:'./images/avatar.png'
+    image:'./images/friend.svg'
   },
   {
     key: 'Micheal Solo',
@@ -36,13 +36,13 @@ const friendOptions = [
     key: 'Michael Pope',
     text: 'Michael Pope',
     value: 'Michael Pope',
-    image: './images/avatar.png'
+    image: './images/friend.svg'
   },
   {
     key: 'Phil Loy',
     text: 'Phil Loy',
     value: 'Phil Loy',
-    image:'./images/avatar.png'
+    image:'./images/friend.svg'
   },
 ]
 
