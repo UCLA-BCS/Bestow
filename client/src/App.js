@@ -21,10 +21,16 @@ class App extends Component {
       }
     })
   }
+  handleLogout=() => {
+    API.logOut().then(results=>{
+      console.log("status", results)
+      window.location.href="/login"
+    })
+  }
   render() {
     return (
       <Router>
-        <Header />
+        <Header handleLogout={this.handleLogout} isLoggedIn={this.state.isLoggedIn}/>
         {window.location.pathname.includes("/home") ||
         window.location.pathname.includes("/friends") ||
         window.location.pathname.includes("/favourite") ? (
