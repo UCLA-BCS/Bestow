@@ -10,7 +10,7 @@ const footer = (props) => {
         <Row>
           <Col md={12}>
             <Row>
-              <Col md={2}>
+              <Col md={6}>
                 <img src="/images/Footer.svg" className="img-responsive" />
               </Col>
             </Row>
