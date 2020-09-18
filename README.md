@@ -12,16 +12,16 @@ Making it easier for people to order the coffee they want!
 
 ## Build Status
 
-Under construction
+MVP of application completed.
+Friends feature still under construction.
 
 ### Future Features
 
 With more funding, we hope to add:
 
-- User look up and sharing profile informationfunctionality 
-- Search for coffee shops nearby
+- Search for restaurants,coffee shops, and snack shop nearby
 - Add on ratings or likes and dislikes features 
-- Expand beyond coffee such as retail and resturants
+- Expand beyond food such as retail 
 - Make wishlist option for easier gift giving 
 
 
@@ -36,13 +36,15 @@ With more funding, we hope to add:
 - CSS (Bootstrap)
 - Javascript
 - React
+- Reactstrap
+- Semantic
 
 ## Team Tasks
 
-_Michael_ Original layout and design, Front end styling
+_Michael_ Original layout and design, UX/UI, graphi designer, typography, front end styling
 
-_Juliana_ Original concept, Front end styling, responsiveness, project management, README, Git assistance
+_Juliana_ Original concept, front end styling, UX/UI, back end support, responsiveness, project management, README, Git assistance
 
 _Mark_ Setting up project base, back-end, database connections/maintenance, hooking up front and back-end 
 
-_Hazel_ Front end, React component building
+_Hazel_ Front end, React component building, UX/UI, and back end support
