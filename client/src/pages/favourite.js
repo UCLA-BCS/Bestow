@@ -43,7 +43,7 @@ class Favourite extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        alert("Clicked on Add");
+        // alert("Clicked on Add");
         const newFavourite = {
             category: this.state.category,
             shop: this.state.shop,
@@ -72,7 +72,7 @@ class Favourite extends Component {
                 <Row>
                     <Col md={6}>
 
-                        <h1>Add Favourite to list</h1>
+                        <h1 className="favoriteH">Add Favourite to list</h1>
 
                         {/* <CategoryDropdown>
                             <Dropdown
@@ -125,7 +125,7 @@ class Favourite extends Component {
 
                 <Col>
                     <Row>
-                        <h1>User's Favourite List</h1>
+                        <h1 className="favoriteH2" >User's Favourite List</h1>
                         {this.state.fooditems.length ? (
                             <Table hover>
                                 <thead>
@@ -153,7 +153,7 @@ class Favourite extends Component {
                             </Table>
 
                         ) : (
-                                <h1><br />No Food Items<br /></h1>
+                                <h4 className="noFood"><br />No Food Items<br /></h4>
                             )}
                     </Row>
                 </Col>

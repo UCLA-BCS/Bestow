@@ -83,9 +83,6 @@ body {
     background-color: #aeccd4;
 
   }
-  .footer {
-    padding-left: 45%;
-
     
 }
 .loginTitle{
@@ -93,4 +90,53 @@ body {
     text-decoration: underline;
 }
 
+.noFood {
+    color:#3382a9;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    font-weight: bold;
+}
+.favoriteH {
+    text-decoration: underline;
+    margin-top: 5%;
+    margin-left: 3%;
+}
+.favoriteH2 {
+    text-decoration: underline;
+    margin-top: 1%;
+    margin-left: 2%;
+}
 
+.friendsH {
+    text-decoration: underline;
+    margin-top: 5%;
+    margin-left: 12%;
+}
+
+.friendsL {
+    margin-top: 8%;
+    margin-bottom: 3%;
+    margin-left:15%;
+   
+}
+
+.findFriends{
+    width: 70%;
+    margin-left: 20%;
+    margin-top:5%;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.friendUserBox{
+    padding:1%;
+    width: 50%;
+    margin-bottom: 2%;
+    margin-left: 7%;
+}
+
+.friendPic{
+    margin-bottom: 5%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
