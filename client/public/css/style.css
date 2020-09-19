@@ -1,8 +1,10 @@
 .header {
     background-color: #3796c2;
     padding-left: 0%;
-
-    
+    padding-right: 0%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+   
 }
 
 .container0 {
@@ -11,7 +13,7 @@ padding-left: 18%;
 }
 
 .container1 {
-    border:  5px  #4d4d4d solid;
+    border:  5px  #3a3a3a solid;
     border-radius: 20px;    
     padding: 2%;
     margin-top: 5%;
@@ -28,7 +30,7 @@ padding-left: 18%;
 }
 
 .container2 {
-    border: 5px #4d4d4d solid;
+    border: 5px #3a3a3a solid;
     border-radius: 20px;
     margin-top: 5% auto;
     /* padding-right:0;
