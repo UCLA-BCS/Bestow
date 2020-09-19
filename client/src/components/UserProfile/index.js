@@ -9,7 +9,7 @@ const ProfileForm = (props) => {
   return (
     <Row>
       <Col md={6}>
-        <img src="/images/avatar1.svg" className="ProfilePic" />
+        <img src="/images/avatar1.png" className="ProfilePic" />
         <Form>
           <InputBox
            value={props.user.name}
