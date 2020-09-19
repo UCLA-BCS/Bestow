@@ -80,7 +80,7 @@ class Login extends Component {
             </Form>
           </Col>
           <Col md={6}>
-          <img src="/images/Profile.png" className="ProfilePic" />
+          <img src="/images/avatar1.svg" className="ProfilePic" />
           </Col>
         </Row>
       </Border>

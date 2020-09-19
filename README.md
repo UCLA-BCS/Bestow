@@ -41,7 +41,7 @@ With more funding, we hope to add:
 
 ## Team Tasks
 
-_Michael_ Original layout and design, UX/UI, graphi designer, typography, front end styling
+_Michael_ Original layout and Logo design, UX/UI, graphic designer, typography, front end styling
 
 _Juliana_ Original concept, front end styling, UX/UI, back end support, responsiveness, project management, README, Git assistance
 

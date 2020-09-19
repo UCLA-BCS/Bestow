@@ -48,7 +48,7 @@ class Register extends Component {
               <Col md={6} className="text-center">
                   <h1 className="welcome">Welcome to Bestow!</h1>
                   
-                  This helpful app remembers your favorite coffee drinks, restaurants, and snacks so you don’t have to. It also provides the users to connect so you will always remember what your friends and family enjoy.
+                  This helpful app remembers your favorite coffee drinks, restaurants, and snacks so you don’t have to. Bestow allows the user to connect to others so you will always remember what your friends and family enjoy.
                   <h4 className="login">Already have an account?</h4>
 
                   <ButtonUi color="black" text="Login" handleSubmit={this.handleLogin}/>
