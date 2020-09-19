@@ -24,7 +24,7 @@ function Friends (props) {
 
                 </Col>
                 <Col md={6}>
-                <img src="/images/Profile.png" className="friendPic" />
+                <img src="/images/friend.svg" className="friendPic" />
                 </Col>
                     
             </Row>
