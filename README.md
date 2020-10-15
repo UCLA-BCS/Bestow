@@ -2,13 +2,13 @@
 
 **Link to Live:** https://bestow-final.herokuapp.com/
 
-Never be without your favorite cup of Joe again!
+Never be without your favorite drinks or foods again!
 
-Store your favorite coffee information so you always will be able to order your perfect cup of coffee for you and your friends.
+Store your favorite coffee drinks, restaurants, and snack information so you always will be able to order your favorites for you and your friends.
 
 ## Motivation
 
-Making it easier for people to order the coffee they want!
+Making it easier for people to order drinks and foods they want!
 
 ## Build Status
 
